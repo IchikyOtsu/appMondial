@@ -1,8 +1,8 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import pickle
 import argparse
 
-liste_tables = []
+liste_reservations = {}
 
 
 def sauvegarder_reservations(liste):
@@ -16,7 +16,7 @@ def charger_reservations():
         with open('reservations.pkl', 'rb') as fichier:
             liste_reservations = pickle.load(fichier)
     except (FileNotFoundError, EOFError):
-        liste_reservations = []
+        liste_reservations = {}
     return liste_reservations
 
 
@@ -32,11 +32,26 @@ class Reservation:
         self.bebes = bebes
 
     def date_passee(self):
-        date_resa = datetime.strptime(self.date_heure, '%Y-%m-%d %H:%M')
-        return date_resa < datetime.now()
+        now = datetime.now()
+        date_heure_obj = datetime.strptime(self.date_heure, '%Y-%m-%d %H:%M')
+        return date_heure_obj < now
+
+    def conflit_horaire(self, autre_reservation):
+        delta = timedelta(hours=2)
+
+        debut_autre = datetime.strptime(autre_reservation.date_heure, '%Y-%m-%d %H:%M') - delta
+        fin_autre = datetime.strptime(autre_reservation.date_heure, '%Y-%m-%d %H:%M') + delta
+
+        debut_nouveau = datetime.strptime(self.date_heure, '%Y-%m-%d %H:%M') - delta
+        fin_nouveau = datetime.strptime(self.date_heure, '%Y-%m-%d %H:%M') + delta
+
+        return not (fin_nouveau < fin_autre or debut_nouveau > debut_autre)
+
+
 
     def __str__(self):
-        return f"Reservation au nom de {self.nom} à {self.date_heure} du type {self.type_service},avec {self.nb_personnes} personne(s) dont {self.pmr} personne(s) à mobilité réduite et {self.bebes} bébé(s) à la table {self.numTable}"
+        return f"Reservation au nom de {self.nom} à {self.date_heure} du type {self.type_service}, avec {self.nb_personnes} personne(s) dont {self.pmr} personne(s) à mobilité réduite et {self.bebes} bébé(s)"
+
 
 def valider_infos(type_service, date_heure, nb_personnes, num_table, pmr, bebes):
     services_valides = ['Europe', 'Afrique', 'Amérique du Nord', 'Amérique du Sud', 'Asie']
@@ -56,7 +71,9 @@ def valider_infos(type_service, date_heure, nb_personnes, num_table, pmr, bebes)
         return False
     return True
 
-def ajouterReservation(nom, numero_client, type_service, date_heure, nb_personnes, numTable, pmr, bebes):
+
+def ajouterReservation(nom, numero_client, type_service, date_heure, nb_personnes, pmr, bebes,numTable):
+    print(liste_reservations)
     if None in (nom, numero_client, type_service, date_heure, nb_personnes, numTable):
         print("Erreur: Tous les champs doivent être renseignés.")
         return liste_reservations
@@ -73,27 +90,23 @@ def ajouterReservation(nom, numero_client, type_service, date_heure, nb_personne
         print("Erreur: La date de réservation est passée.")
         return liste_reservations
 
-    for resa in liste_reservations:
-        if resa["table"] == reservation.numTable:
-            print(f"ATTENTION la table {reservation.numTable} est déjà réservée !")
-            return liste_reservations
+    if reservation.numTable not in liste_reservations:
+        liste_reservations[reservation.numTable] = []
 
-        # Ajouter la réservation à la liste des réservations
-    dico = {"table": reservation.numTable}
-    dico[reservation.numTable] = reservation
-    liste_reservations.append(dico)
+    for resa in liste_reservations[reservation.numTable]:
+        if reservation.conflit_horaire(resa):
+            print(f"ATTENTION: La table {reservation.numTable} est déjà réservée dans cette plage horaire.")
+            return liste_reservations
+    liste_reservations[reservation.numTable].append(reservation)
 
     sauvegarder_reservations(liste_reservations)
 
     return liste_reservations
 
-
 def afficheReservations():
-    reservations_futures = [res for res in liste_reservations if not res[res["table"]].date_passee()]
-    sauvegarder_reservations(reservations_futures)
-    for reservation in reservations_futures:
-        print(reservation[reservation["table"]])
-
+    for num_table, reservations in liste_reservations.items():
+        for reservation in reservations:
+            print(reservation)
 
 def main():
     charger_reservations()
@@ -103,16 +116,17 @@ def main():
     parser.add_argument("-t", "--type", help="Type de service")
     parser.add_argument("-d", "--date", help="Date et heure de la réservation (format: 'YYYY-MM-DD HH:MM')")
     parser.add_argument("-nbr", "--nombreClient", help="Nombre de clients")
-    parser.add_argument("-pmr", "--PMR",action="store_true", help="Nombre de personnes à mobilité réduite")
-    parser.add_argument("-bb", "--bébé",action="store_true", help="Nombre de bébés")
+    parser.add_argument("-pmr", "--PMR", action="store_true", help="Nombre de personnes à mobilité réduite")
+    parser.add_argument("-bb", "--bébé", action="store_true", help="Nombre de bébés")
     parser.add_argument("-tb", "--numTable", help="Numéro de table")
-    parser.add_argument("-a","--affichage", action="store_true", help="Affichage des réservations")
+    parser.add_argument("-a", "--affichage", action="store_true", help="Affichage des réservations")
 
     args = parser.parse_args()
     if args.affichage:
-      afficheReservations()
+        afficheReservations()
     else:
-      ajouterReservation(args.nom, args.numero, args.type, args.date, args.nombreClient, args.numTable, args.PMR, args.bébé)
+        ajouterReservation(args.nom, args.numero, args.type, args.date, args.nombreClient, args.PMR, args.bébé, args.numTable)
+
 
 if __name__ == "__main__":
     main()
