@@ -1,4 +1,7 @@
 class Reservation:
+    '''
+    class used to init a new reservation for a restaurant 
+    '''
     def __init__(self,nom,telNum,numTable,dateHeure,idCuisine,pmr =None,bb =0):
         self.__nom = nom
         self.__telNum = int(telNum)
@@ -9,7 +12,9 @@ class Reservation:
         self.__bb = bb
     def __str__(self):
         return f"nom :{self.nom}, telNum :{self.telNum}, numTable :{self.numTable}, dateHeure :{self.dateHeure}, idCuisine :{self.idCuisine}, pmr :{self.pmr}, bb :{self.bb}"
-
+    '''
+    :rest == modification of attribut 
+    '''
     @property
     def nom(self):
         return self.__nom
