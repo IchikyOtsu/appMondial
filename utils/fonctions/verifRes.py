@@ -11,7 +11,7 @@ def verifRes(list):
         if not str(chiffre).isnumeric():
             print("Pas bon format de numéro de téléphone")
     try:
-        if datetime.datetime.strptime(list[2] ,'%Y-%m-%d %H:%M'):
+        if not datetime.datetime.strptime(list[2] ,'%Y-%m-%d %H:%M'):
             print("mauvais format de date")
     except TypeError:
         print("Mauvais format de date")
@@ -31,6 +31,9 @@ def verifRes(list):
     if not str(list[5]).lower() in ["oui","non"]:
         print("Il y'a t'il des bébé ? Oui-Non")
 
+    #if not int(list[6]) and int(list[6]) not in listTableId:
+        #print("Numéro de table pas valide !")
 
 
-verifRes(["456","0afea","2023-12-02 21:21","eu","oui","oui"])
+
+#verifRes(["456","0afea","202-12-02 21:2","eu","oui","oui"])
