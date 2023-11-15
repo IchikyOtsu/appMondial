@@ -2,11 +2,12 @@ class Reservation:
     '''
     class used to init a new reservation for a restaurant 
     '''
-    def __init__(self,nom,telNum,numTable,dateHeure,idCuisine,pmr =None,bb =0):
+    def __init__(self,nom,telNum,numTable,dateHeure,,nbrPersonne,idCuisine,pmr =None,bb =0):
         self.__nom = nom
         self.__telNum = int(telNum)
         self.__numTable = numTable
         self.__dateHeure = dateHeure
+        self.__nbrPersonne = nbrPersonne
         self.__idCuisine = idCuisine
         self.__pmr = pmr
         self.__bb = bb
@@ -43,6 +44,13 @@ class Reservation:
     def dateHeure(self, new_dateHeure):
         self.__dateHeure = new_dateHeure
 
+    @property
+    def nbrPersonne(self):
+        return self.__nbrPersonne
+    @nbrPersonne.setter
+    def nbrPersonne(self,new_nbrPersonne):
+        self.__nbrPersonne = new_nbrPersonne
+    
     @property
     def idCuisine(self):
         return self.__idCuisine
