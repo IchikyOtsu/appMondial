@@ -33,6 +33,14 @@ class type_cuisine_manager:
             print("Voici les éléments de la liste")
             for elem in self.cuisine_list:
                     print(f"{elem}")
+    def findCuisineByid(self ,id):
+        '''
+        :param str nom:
+        :find a name in liste
+        '''
+        for i in self.cuisine_list:
+            if i.idCuisine == id:
+                return i
     
     def __str__(self):
         return f"Liste de cuisine : {self._cuisine_list}"
