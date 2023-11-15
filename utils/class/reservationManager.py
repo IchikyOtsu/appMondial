@@ -1,4 +1,3 @@
-
 class ReservationManager:
     def __init__(self):
         self.reservations = []
@@ -22,9 +21,20 @@ class ReservationManager:
         for i in self.reservations:
             if i.nom == nom:
                 return i
+    def findReservationByTable(self ,id):
+        '''
+        :param str nom:
+        :find a name in liste
+        '''
+        reserv = []
+        for i in self.reservations:
+            if i.numTable == id:
+                reserv.append(i)
+        return reserv
     def affichage(self):
         '''
         :print:liste
         '''
         for i in self.reservations:
             print(i)
+
