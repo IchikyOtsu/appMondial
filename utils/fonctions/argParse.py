@@ -14,7 +14,7 @@ def argParse():
     parser.add_argument("-nbr", type=int,
                         help="Nombre de personne : -nbr 15 ")
 
-    parser.add_argument("-TC", type=str, help="ID du type de cuisine. Choix : Europe(eu), Asie (asi), Amérique du Nord/Sud (as/an), Afrique (af). Veuillez entrer l'id et non le nom complet.")
+    parser.add_argument("-TC", type=str, help="ID du type de cuisine. Choix : Europe(eu), Asie (azy), Amérique du Nord/Sud (as/an), Afrique (af). Veuillez entrer l'id et non le nom complet.")
     parser.add_argument("-pmr", type=lambda x: (str(x).lower() == 'true'),
                         help="Besoin PMR Choix: (Oui/Nom)")
     parser.add_argument("-bb", type=lambda x: (str(x).lower() == 'true'),
