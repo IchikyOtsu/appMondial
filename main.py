@@ -13,13 +13,6 @@ from utils.fonctions.attrib import attribution
 from utils.fonctions.verifRes import verifRes
 from utils.fonctions.supprimerRes import supprimerRes
 def main():
-    '''
-        liste = ['nom',475309844,5,'2023',1,False,True]
-        ajouterReservation(liste,managerRes)
-        managerRes.affichage()
-        # Après modifications des managers
-        init.sauvegarder_managers()
-        '''
     init = initial()
     # Utilisation des managers
     managerRes = init.reservation_manager
@@ -29,7 +22,7 @@ def main():
 
     liste = argParse(managerRes)
 
-    if liste is False:
+    if liste == False:
         managerRes.affichage()
         return 0
     else:
@@ -42,11 +35,6 @@ def main():
         print('python main.py -h')
         return 0
 
-    # python .\main.py -nom Brice -tel 0471371916 -dh "2023-11-15 14:30" -nbr 4 -TC eu -pmr non -bb non
-    liste = verifRes(liste,managerCuisine)
-    #print(liste)
-    if liste is False:
-        return 0
 
     liste = attribution(liste,managerRes,managerTable,managerCuisine)
     if liste is False:
@@ -95,6 +83,11 @@ def dataBase():
     init.sauvegarder_managers()
 
 def afficherManager():
+    '''
+    Affiche les services, les types de cuisine et les tables
+    pré: --
+    post: --
+    '''
     init = initial()
 
     # Utilisation des managers

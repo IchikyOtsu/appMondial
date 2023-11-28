@@ -1,29 +1,48 @@
 class TypeServiceManager:
     def __init__(self):
-        self.services = []
-    def addService(self,new_service):
         '''
-        :param object new_service: service
-        :add a service in the liste
+        Initialise une liste vide de services.
+
+        PRE : -
+        POST : Crée une liste vide pour stocker les services.
+        '''
+        self.services = []
+
+    def addService(self, new_service):
+        '''
+        Ajoute un service à la liste.
+
+        PRE : new_service doit être un objet de type TypeService.
+        POST : Ajoute le service à la liste des services.
         '''
         self.services.append(new_service)
-    def removeService(self,service):
+
+    def removeService(self, service):
         '''
-        :param object service: service
-        :remove a service in the liste
+        Supprime un service de la liste.
+
+        PRE : service doit être un objet de type TypeService présent dans la liste.
+        POST : Supprime le service de la liste des services.
         '''
         self.services.remove(service)
-    def findServiceById(self,idService):
+
+    def findServiceById(self, idService):
         '''
-        :param int idService: id
-        :find a service in the liste  
+        Recherche un service par son identifiant.
+
+        PRE : idService doit être un identifiant valide.
+        POST : Affiche les informations du service correspondant à l'identifiant spécifié s'il existe.
         '''
         for i in self.services:
             if i.idService == idService:
                 print(i)
+
     def afficherServices(self):
         '''
-        :print liste
+        Affiche la liste des services.
+
+        PRE : -
+        POST : Affiche les informations de chaque service dans la liste.
         '''
         for i in self.services:
             print(i)
