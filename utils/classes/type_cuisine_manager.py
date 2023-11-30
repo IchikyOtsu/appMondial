@@ -62,9 +62,9 @@ class type_cuisine_manager:
         POST : Supprime les réservations de la liste des types de cuisine.
         '''
         try:
-            if not (isinstance(reservations, type_cuisine) and reservations in self.reservations):
+            if not (isinstance(reservations, type_cuisine) and reservations in self._cuisine_list):
                 raise ValueError("l'instance a retirer n'est pas une instance de type_cuisine.")
-            self.tables.remove(reservations)
+            self._cuisine_list.remove(reservations)
         except ValueError as e:
             print(e)
 
