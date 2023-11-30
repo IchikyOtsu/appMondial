@@ -1,88 +1,74 @@
 class TypeService:
     '''
-    Classe utilisée pour initialiser le type de service dans un restaurant.
+    class used to init the type of the service in a resto
     '''
 
-    def __init__(self, idService, nom, idEtage):
+    def __init__(self,idService,nom,idEtage):
         '''
-        Initialise le type de service avec un identifiant, un nom et un identifiant d'étage.
-
-        PRE : idService, nom et idEtage doivent être des paramètres valides.
-        POST : Crée une instance de TypeService avec les attributs spécifiés.
+        pre:idService == V or B
+            nom == VIP or basic
+            idEtage == int and idEtage >= 0
+        post:initialise l'instance
         '''
+        assert isinstance(idService, str) and idService == "V" or idService == "B", "l'id qu'il faut entrer est soit V ou B."
+        assert isinstance(nom,str) and nom == "VIP" or nom == "basic", "le nom qu'il faut entrer est soit VIP ou basic."
+        assert isinstance(idEtage,int) and idEtage >= 0 , "le numero de l'etage doit etre un nombre strictement superieur a 0."
         self.__idService = idService
         self.__nom = nom
         self.__idEtage = idEtage
-
     def __str__(self):
         '''
-        Renvoie une représentation textuelle du type de service.
-
-        PRE : -
-        POST : Renvoie une chaîne de caractères contenant l'identifiant, le nom et l'identifiant d'étage du service.
+        pre: --
+        post:retourner l'object de l'initialisation de l'instance.
         '''
         return f" idService: {self.__idService}, nom: {self.__nom}, idEtage: {self.__idEtage}"
 
     '''
-    :rest: sécurité et modification
+    :rest: security and modify
     '''
-
     @property
     def idService(self):
-        '''
-        Récupère l'identifiant du service.
-
-        PRE : -
-        POST : Renvoie l'identifiant du service.
-        '''
         return self.__idService
-
     @idService.setter
     def idService(self, new_idService):
         '''
-        Modifie l'identifiant du service.
-
-        PRE : new_idService doit être un identifiant valide.
-        POST : Modifie l'identifiant du service avec la nouvelle valeur spécifiée.
+        pre: idService == V or B
+        post: initialise un nouveau idService a l'instance
         '''
-        self.__idService = new_idService
-
+        try:
+            if not (isinstance(new_idService, str) and new_idService == "V" or new_idService == "B"):
+                raise ValueError("l'id qu'il faut entrer est soit V ou B.")
+            self.__idService = new_idService
+        except ValueError as e:
+            print(e)
     @property
     def nom(self):
-        '''
-        Récupère le nom du service.
-
-        PRE : -
-        POST : Renvoie le nom du service.
-        '''
         return self.__nom
-
     @nom.setter
     def nom(self, new_nom):
         '''
-        Modifie le nom du service.
-
-        PRE : new_nom doit être un nom valide.
-        POST : Modifie le nom du service avec la nouvelle valeur spécifiée.
+        pre: nom == VIP or basic
+        post: initialise un nouveaux nom a l'instance
         '''
-        self.__nom = new_nom
+        try:
+            if not (isinstance(new_nom, str) and new_nom == "V" or new_nom == "B"):
+                raise ValueError("le nom qu'il faut entrer est soit VIP ou basic.")
+            self.__nom = new_nom
+        except ValueError as e:
+            print(e)
 
     @property
     def idEtage(self):
-        '''
-        Récupère l'identifiant de l'étage associé au service.
-
-        PRE : -
-        POST : Renvoie l'identifiant de l'étage associé au service.
-        '''
         return self.__idEtage
-
     @idEtage.setter
     def idEtage(self, new_idEtage):
         '''
-        Modifie l'identifiant de l'étage associé au service.
-
-        PRE : new_idEtage doit être un identifiant d'étage valide.
-        POST : Modifie l'identifiant de l'étage associé au service avec la nouvelle valeur spécifiée.
-        '''
-        self.__idEtage = new_idEtage
+               pre: idEtage == int and idEtage >= 0
+               post: initialise un nouveau idEtage de l'instance
+               '''
+        try:
+            if not (isinstance(new_idEtage,int) and new_idEtage >= 0):
+                raise ValueError("le numero de l'etage doit etre un nombre strictement superieur a 0.")
+            self.__idEtage = new_idEtage
+        except ValueError as e:
+            print(e)

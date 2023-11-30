@@ -1,86 +1,80 @@
 class Table:
     '''
-    Classe utilisée pour initialiser une nouvelle table
+    class used for init a new table
     '''
-    def __init__(self, numTable, capaciteTable, idService):
+    def __init__(self,numTable,capaciteTable,idService):
         '''
-        Initialise une nouvelle table avec un numéro de table, une capacité et un identifiant de service.
-
-        PRE : numTable, capaciteTable et idService doivent être des entiers.
-        POST : Assignation des valeurs d'entrée aux attributs correspondants.
+        pre: numTable == int and numTable > 0
+             capaciteTable == 2 ,4 ,15 and int
+             idService == str and idService == VIP, basic
+        post: initialisation de l'instance Table
         '''
+        assert isinstance(numTable, int) and numTable > 0, "L'id de la table doit être un nombre strictement positif."
+        assert isinstance(capaciteTable, int) and capaciteTable == 2 or capaciteTable == 4 or capaciteTable == 15, "le nombre de personne autoriser sur une table sont 2,4,15."
+        assert isinstance(idService, str) and idService == "V" or idService == "B", "l'id qu'il faut entrer est soit V ou B."
         self.__numTable = int(numTable)
         self.__capaciteTable = int(capaciteTable)
         self.__idService = idService
 
     def __str__(self):
         '''
-        Renvoie une représentation textuelle de la table.
-
-        PRE : -
-        POST : Renvoie une chaîne de caractères contenant le numéro de table, la capacité et l'identifiant de service.
+        pre:--
+        post:retourne le dictionnaire de initialisation de Table
         '''
         return f"numTable: {self.__numTable}, capaciteTable: {self.__capaciteTable}, idService: {self.__idService} "
 
     '''
-    :rest: modification et sécurité
+    :rest: modify and security
     '''
     @property
     def numTable(self):
-        '''
-        Obtient le numéro de table.
-
-        PRE : -
-        POST : Renvoie le numéro de table.
-        '''
         return self.__numTable
-
     @numTable.setter
     def numTable(self, new_numTable):
         '''
-        Définit un nouveau numéro de table.
-
-        PRE : new_numTable doit être un entier.
-        POST : Assignation de la nouvelle valeur à l'attribut du numéro de table.
+        pre: new_numTable == int and new_numTable > 0
+        post: ajouter une nouvelle table a l'instance
         '''
-        self.__numTable = new_numTable
+        try:
+            if not isinstance(new_numTable, int):
+                raise TypeError("L'id de la table doit être un nombre.")
+            if not (isinstance(new_numTable, int) and new_numTable > 0):
+                raise ValueError("L'id de la table doit être un nombre strictement plus grand que 0.")
+            self.__numTable = new_numTable
+        except (ValueError, TypeError) as e:
+            print(e)
 
     @property
     def capaciteTable(self):
-        '''
-        Obtient la capacité de la table.
-
-        PRE : -
-        POST : Renvoie la capacité de la table.
-        '''
         return self.__capaciteTable
-
     @capaciteTable.setter
     def capaciteTable(self, new_capaciteTable):
         '''
-        Définit une nouvelle capacité de table.
-
-        PRE : new_capaciteTable doit être un entier.
-        POST : Assignation de la nouvelle valeur à l'attribut de la capacité de la table.
+        pre: new_capaciteTable == 2 ,4 ,15 and int
+        post: ajouter un noouveau nombre de personnne a une table dans l'instance
         '''
-        self.__capaciteTable = new_capaciteTable
+        try:
+
+            if not isinstance(new_capaciteTable, int) :
+                raise TypeError("le nombre de personne doit être un nombre.")
+            if not (isinstance(new_capaciteTable, int) and new_capaciteTable == 2 or new_capaciteTable == 4 or new_capaciteTable == 15):
+                raise ValueError("le nombre de personne autoriser sur une table sont 2,4,15.")
+            self.__capaciteTable = new_capaciteTable
+        except (ValueError,TypeError) as e :
+            print(e)
 
     @property
     def idService(self):
-        '''
-        Obtient l'identifiant de service de la table.
-
-        PRE : -
-        POST : Renvoie l'identifiant de service de la table.
-        '''
         return self.__idService
-
     @idService.setter
     def idService(self, new_idService):
         '''
-        Définit un nouvel identifiant de service pour la table.
-
-        PRE : new_idService doit être un entier.
-        POST : Assignation de la nouvelle valeur à l'attribut de l'identifiant de service de la table.
+            pre: new_idService == str and new_idService == VIP, basic
+            post: ajouter un nouveau new_idService a l'intsance
         '''
-        self.__idService = new_idService
+        try:
+            if not (isinstance(new_idService, str) and new_idService == "V" or new_idService ==  "B"):
+                raise ValueError("l'id qu'il faut entrer est soit V ou B.")
+            self.__idService = new_idService
+        except ValueError as e:
+            print(e)

@@ -1,3 +1,5 @@
+from utils.classes.reservation import Reservation
+
 class ReservationManager:
     def __init__(self):
         '''
@@ -5,7 +7,6 @@ class ReservationManager:
         post: initialisation de l'instance qui comporte une liste
         '''
         self.reservations = []
-
     def addReservation(self,addRes):
         '''
         :param str addRes:newReservation
@@ -14,6 +15,7 @@ class ReservationManager:
         pre: addRes == instance de Reservation
         post: ajoute des donnees dans la list de l'instance
         '''
+        assert isinstance(addRes, Reservation), "ce n'est pas une instance de Reservation"
         self.reservations.append(addRes)
     def removeReservation(self ,rmvRes):
         '''
@@ -24,7 +26,13 @@ class ReservationManager:
             rmvRes == instance de Reservation
         post: retrait des donnees dans la list de l'instance
         '''
-        self.reservations.remove(rmvRes)
+        #assert isinstance(rmvRes,Reservation)and rmvRes in self.reservations, "La 'instance doit faire partie de l'instance Reservations et faire partie de la liste."
+        try:
+            if not (isinstance(rmvRes,Reservation)and rmvRes in self.reservations):
+                raise TypeError("l'element entre doit etre une instance de Reservation qui fait partie de la liste reservation.")
+            self.reservations.remove(rmvRes)
+        except TypeError as e:
+            print(e)
     def findReservationByName(self ,nom):
         '''
         :param str nom:
@@ -34,25 +42,37 @@ class ReservationManager:
             nom == str
         post: retourne l'object
         '''
-        for i in self.reservations:
-            if i.nom == nom:
-                return i
+        try:
+            if not isinstance(nom, str):
+                raise TypeError("La valeur donnée n'est pas un string")
+            for i in self.reservations:
 
-    def findReservationById(self ,id):
-        for i in self.reservations:
-            if i.idRes == id:
-                return i
+                if i.nom == nom:
+                    return i
+        except TypeError as e :
+            print(e)
+        except:
+            print("erreur car pas dedans")
+    def findReservationByTable(self,table):
+        try:
+            if not isinstance(table, int):
+                raise TypeError("La valeur donnée n'est pas un string . findReservationByTable")
+            listeTable = []
+            for i in self.reservations:
 
-    def findReservationByTable(self ,id):
-        '''
-        :param str nom:
-        :find a name in liste
-        '''
-        reserv = []
-        for i in self.reservations:
-            if i.numTable == id:
-                reserv.append(i)
-        return reserv
+                if i.numTable == table:
+                    listeTable.append(i)
+
+
+            return listeTable
+
+        except TypeError as e:
+            print(e)
+        except:
+            print("erreur car pas dedans")
+
+
+
     def affichage(self):
         '''
         :print:liste
@@ -61,4 +81,3 @@ class ReservationManager:
         '''
         for i in self.reservations:
             print(i)
-

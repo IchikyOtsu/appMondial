@@ -32,6 +32,7 @@ def argParse(managerRes):
     if args.r and managerRes:
         return False, supprimerRes(args.r, managerRes)
     else:
+
         assert isinstance(args.nom, str) or not str(
             args.nom).isalpha(), "Il faut que le nom soit écrit avec des charactères alphabétiques Exemple: Hugo"
         assert isinstance(args.tel, str) and str(

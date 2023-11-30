@@ -1,48 +1,56 @@
 class TypeServiceManager:
     def __init__(self):
         '''
-        Initialise une liste vide de services.
-
-        PRE : -
-        POST : Crée une liste vide pour stocker les services.
+        pre:--
+        post:initialise un liste pour mettre des instance
         '''
         self.services = []
-
-    def addService(self, new_service):
+    def addService(self,new_service):
         '''
-        Ajoute un service à la liste.
-
-        PRE : new_service doit être un objet de type TypeService.
-        POST : Ajoute le service à la liste des services.
+        :param object new_service: service
+        :add a service in the liste
+        pre: new_service == Object
+        post: ajouter un service a liste
         '''
+        assert isinstance(new_service,object)
         self.services.append(new_service)
-
-    def removeService(self, service):
+    def removeService(self,service):
         '''
-        Supprime un service de la liste.
-
-        PRE : service doit être un objet de type TypeService présent dans la liste.
-        POST : Supprime le service de la liste des services.
+        :param object service: service
+        :remove a service in the liste
+        pre: entree une nouvelle instance
+              service in self.services
+        post: retrait des donnees dans la list de l'instance
         '''
-        self.services.remove(service)
-
-    def findServiceById(self, idService):
+        try:
+            if not(isinstance(service, TypeService) and service in self.services):
+                raise ValueError("L'Object n'est pas de la list existant. Indiquer un Object existant dans l'instance. ")
+            self.services.remove(service)
+        except ValueError as e:
+            print(e)
+    def findServiceById(self,idService):
         '''
-        Recherche un service par son identifiant.
-
-        PRE : idService doit être un identifiant valide.
-        POST : Affiche les informations du service correspondant à l'identifiant spécifié s'il existe.
+        :param int idService: id
+        :find a service in the liste
+        pre:idService == V or B
+        post: retourne l'instance qui a cett idService
         '''
-        for i in self.services:
-            if i.idService == idService:
-                print(i)
+        try:
+            if not isinstance(idService, str):
+                raise ValueError("La valeur donnée n'est V ou B.")
+            for i in self.reservations:
 
+                if i.idService == idService:
+                    return i
+        except ValueError as e:
+            print(e)
+        except:
+            print("erreur car pas dedans.")
     def afficherServices(self):
         '''
-        Affiche la liste des services.
-
-        PRE : -
-        POST : Affiche les informations de chaque service dans la liste.
+        :print liste
+        pre:--
+        post: afficher la liste
         '''
         for i in self.services:
             print(i)
