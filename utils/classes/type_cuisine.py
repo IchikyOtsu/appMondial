@@ -7,8 +7,12 @@ class type_cuisine:
         Initialise un type de cuisine avec un identifiant, un nom et un identifiant de service.
 
         PRE : id, nom et idService doivent être des chaînes de caractères non vides.
+            id in [eu,azy,af,an ,as ou VIP] and id == str
+            nom == str
         POST : Assignation des valeurs d'entrée aux attributs correspondants.
         '''
+        assert isinstance(id, str) in ["eu","azy","af","an" ,"as" , "VIP"] , "l'id de cuisine doit être  eu,azy,af,an ,as ou VIP"
+        assert isinstance(nom, str), "le nom de la cuisine doit etre une chaine de caractère"
         self._idCuisine = id
         self._nomTypeCuisine = nom
         self._idService = idService
@@ -32,9 +36,15 @@ class type_cuisine:
         Définit un nouvel identifiant de cuisine.
 
         PRE : value doit être une chaîne de caractères non vide.
+            value == str and value in [eu,azy,af,an ,as,VIP]
         POST : Assignation de la nouvelle valeur à l'attribut de l'identifiant de cuisine.
         '''
-        self._idCuisine = value
+        try:
+            if not isinstance(value, str)in ["eu","azy","af","an" ,"as" , "VIP"] :
+                raise ValueError("l'id de cuisine doit être  eu,azy,af,an ,as ou VIP")
+            self._idCuisine = value
+        except ValueError as e:
+            print(e)
 
     @property
     def nomTypeCuisine(self):
@@ -52,9 +62,16 @@ class type_cuisine:
         Définit un nouveau nom pour le type de cuisine.
 
         PRE : value doit être une chaîne de caractères non vide.
+            value === str
         POST : Assignation de la nouvelle valeur à l'attribut du nom du type de cuisine.
         '''
-        self._nomTypeCuisine = value
+        try:
+            if not isinstance(value, str):
+                raise ValueError("le nom de la cuisine doit etre une chaine de caractère")
+            self._nomTypeCuisine = value
+        except ValueError as e:
+            print(e)
+
 
     @property
     def idService(self):

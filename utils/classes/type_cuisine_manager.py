@@ -1,3 +1,4 @@
+from utils.classes.type_cuisine import type_cuisine
 class type_cuisine_manager:
     '''
     Classe utilisée pour initialiser une liste de différents types de cuisine.
@@ -48,20 +49,24 @@ class type_cuisine_manager:
         PRE : Les réservations doivent être des objets de type TypeCuisine non présents dans la liste.
         POST : Ajoute les réservations à la liste des types de cuisine.
         '''
+        assert isinstance(reservations, type_cuisine), "l'instance ne fait pas partie de type_cuisine"
         for reservation in reservations:
             if reservation not in self.cuisine_list:
                 self.cuisine_list.append(reservation)
 
-    def removeCuisine(self, *reservations):
+    def removeCuisine(self, reservations):
         '''
         Supprime des types de cuisine de la liste.
 
         PRE : Les réservations doivent être des objets de type TypeCuisine présents dans la liste.
         POST : Supprime les réservations de la liste des types de cuisine.
         '''
-        for reservation in reservations:
-            if reservation in self.cuisine_list:
-                self.cuisine_list.remove(reservation)
+        try:
+            if not (isinstance(reservations, type_cuisine) and reservations in self.reservations):
+                raise ValueError("l'instance a retirer n'est pas une instance de type_cuisine.")
+            self.tables.remove(reservations)
+        except ValueError as e:
+            print(e)
 
     def displayList(self):
         '''
@@ -82,9 +87,16 @@ class type_cuisine_manager:
         PRE : id doit être une chaîne de caractères correspondant à un identifiant de type de cuisine.
         POST : Renvoie le type de cuisine correspondant à l'identifiant spécifié s'il existe.
         '''
-        for i in self.cuisine_list:
-            if i.idCuisine == id:
-                return i
+        try:
+            if not isinstance(id,str):
+                raise TypeError("ce n'est pas un str")
+            for i in self.cuisine_list:
+                if i.idCuisine == id:
+                    return i
+        except TypeError as e:
+            print(e)
+        except:
+            print("erreur")
 
     def __str__(self):
         '''
