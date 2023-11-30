@@ -72,7 +72,7 @@ def dataBase():
 
     managerTable.afficherTables()
     eu= type_cuisine('eu','Europe','S1')
-    azi = type_cuisine('azi', 'Asie', 'S1')
+    azi = type_cuisine('azy', 'Asie', 'S1')
     ads = type_cuisine('as', 'Amérique du Sud', 'S1')
     adn = type_cuisine('an', 'Amérique du Nord', 'S1')
     afri = type_cuisine('af', 'Afrique', 'S1')
