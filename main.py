@@ -19,7 +19,7 @@ def main():
         managerRes.affichage()
         # Après modifications des managers
         init.sauvegarder_managers()
-        '''
+    '''
     init = initial()
     # Utilisation des managers
     managerRes = init.reservation_manager
@@ -28,7 +28,7 @@ def main():
     managerCuisine = init.typeCuisineManager
 
     liste = argParse(managerRes)
-
+    #Mettre le code pour CLI amélioré avec question reponse ici mais ajouter dans le fichier argParse un nouveau paramètre qui permet de choisir le mode de terminale donc soit par commande terminale avec python main.py -h ou ma version avec CLI amélioré
     if liste is False:
         managerRes.affichage()
         return 0

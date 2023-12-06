@@ -1,5 +1,6 @@
 import argparse
 from utils.fonctions.supprimerRes import supprimerRes
+from utils.fonctions.reservationCli import reservationCli
 
 def argParse(managerRes):
     parser = argparse.ArgumentParser(
@@ -20,6 +21,7 @@ def argParse(managerRes):
                         help="Besoin PMR Choix: (Oui/Nom)")
     parser.add_argument("-bb", type=lambda x: (str(x).lower() == 'true'),
                         help="Chaise bébé nécessaire Choix: (oui/non)")
+    parser.add_argument("-cli", type=str, help="Utilisation amélioré de la CLI. Choix: (oui/non)")
 
 
     args = parser.parse_args()
@@ -27,6 +29,8 @@ def argParse(managerRes):
         return False
     if args.r:
         return False, supprimerRes(args.r, managerRes)
+    if args.cli == 'oui':
+        return reservationCli()
     else:
         if args.bb is False:
             args.bb = 'non'
