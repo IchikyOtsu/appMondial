@@ -25,7 +25,7 @@ def reservationCli():
     tel = input("Entrez le numéro de téléphone : ")
     date = select_date()
     # Générer une liste de toutes les heures de la journée
-    heures = [f"{h:02d}:{m:02d}" for h in range(24) for m in range(0, 60, 15)]
+    heures = [f"{h:02d}:{m:02d}" for h in range(19,22) for m in range(0, 60, 15) if not (h == 21 and m > 0)]
 
     heure = questionary.select("Sélectionnez une heure :", choices=heures).ask()
 
