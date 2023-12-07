@@ -100,3 +100,18 @@ class type_cuisine:
         POST : Renvoie une chaîne de caractères représentant l'identifiant de la cuisine, le type de cuisine et l'identifiant de service.
         '''
         return f"Identifiant cuisine : {self.idCuisine}, Type de cuisine : {self.nomTypeCuisine}, Identifiant service : {self.idService}"
+
+    def to_json(self):
+        return {
+            "idCuisine": self.idCuisine,
+            "nomTypeCuisine": self.nomTypeCuisine,
+            "idService": self.idService
+        }
+
+    @classmethod
+    def from_json(cls, data):
+        return cls(
+            idCuisine=data.get("idCuisine"),
+            nomTypeCuisine=data.get("nomTypeCuisine"),
+            idService=data.get("idService")
+        )

@@ -106,3 +106,20 @@ class type_cuisine_manager:
         POST : Renvoie une chaîne de caractères contenant la liste des types de cuisine.
         '''
         return f"Liste de cuisine : {self._cuisine_list}"
+
+    def to_json(self):
+        # Convertir la liste de tables en une liste de dictionnaires JSON
+        cuisine_list_json = [cuisine_list.to_json() for cuisine_list in self.cuisine_list]
+        return {
+            "tables": cuisine_list_json
+        }
+
+    @classmethod
+    def from_json(cls, data):
+        # Créer une instance de TableManager à partir d'un dictionnaire JSON
+        manager = cls()
+        cuisine_list = data.get("tables", [])
+        for cuisine_list in cuisine_list:
+            table = cuisine_list.from_json(cuisine_list)
+            manager.addCuisine(table)
+        return manager

@@ -61,3 +61,20 @@ class TableManager:
         '''
         for i in self.tables:
             print(i)
+            
+    def to_json(self):
+        # Convertir la liste de tables en une liste de dictionnaires JSON
+        tables_json = [table.to_json() for table in self.tables]
+        return {
+            "tables": tables_json
+        }
+
+    @classmethod
+    def from_json(cls, data):
+        # Créer une instance de TableManager à partir d'un dictionnaire JSON
+        manager = cls()
+        tables_data = data.get("tables", [])
+        for table_data in tables_data:
+            table = Table.from_json(table_data)
+            manager.addTable(table)
+        return manager

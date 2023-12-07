@@ -54,3 +54,17 @@ class TypeServiceManager:
         '''
         for i in self.services:
             print(i)
+
+    def to_json(self):
+        services_json = [services.to_json() for services in self.services]
+        return {
+            "services": services_json
+        }
+    @classmethod
+    def from_json(cls, data):
+        manager = cls()
+        services_data = data.get("services", [])
+        for services_data in services_data:
+            services = services.from_json(services_data)
+            manager.addService(services)
+        return manager

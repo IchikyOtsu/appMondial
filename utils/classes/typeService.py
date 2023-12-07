@@ -72,3 +72,20 @@ class TypeService:
             self.__idEtage = new_idEtage
         except ValueError as e:
             print(e)
+    
+    def to_json(self):
+        # Convertir les attributs du type de service en un dictionnaire JSON
+        return {
+            "idService": self.idService,
+            "nom": self.nom,
+            "idEtage": self.idEtage
+        }
+
+    @classmethod
+    def from_json(cls, data):
+        # Créez une instance de TypeService à partir d'un dictionnaire JSON
+        return cls(
+            idService=data.get("idService"),
+            nom=data.get("nom"),
+            idEtage=data.get("idEtage")
+        )

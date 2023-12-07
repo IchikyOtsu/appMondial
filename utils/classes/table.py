@@ -78,3 +78,19 @@ class Table:
             self.__idService = new_idService
         except ValueError as e:
             print(e)
+    def to_json(self):
+        # Convertir les attributs de la table en un dictionnaire JSON
+        return {
+            "numTable": self.numTable,
+            "capaciteTable": self.capaciteTable,
+            "idService": self.idService
+        }
+
+    @classmethod
+    def from_json(cls, data):
+        # Créez une instance de la table à partir d'un dictionnaire JSON
+        return cls(
+            numTable=data.get("numTable"),
+            capaciteTable=data.get("capaciteTable"),
+            idService=data.get("idService")
+        )
