@@ -54,29 +54,29 @@ def dataBase():
     managerService = init.typeServManager
     managerCuisine = init.typeCuisineManager
 
-    serv1= TypeService('S1','Basique','RDC')
-    serv2 = TypeService('S2', 'VIP', 'RT')
+    serv1= TypeService('B','Basique',0)
+    serv2 = TypeService('V', 'VIP', 1)
     managerService.addService(serv2)
     managerService.addService(serv1)
     managerService.afficherServices()
 
 
     for i in range(26):
-        table = Table(i+1, 4,'S1')
+        table = Table(i+1, 4,'B')
         managerTable.addTable(table)
-    table15 = Table(27, 15, 'S1')
+    table15 = Table(27, 15, 'B')
     managerTable.addTable(table15)
     for i in range(4):
-        tableVip = Table(i+28,4,'S2')
+        tableVip = Table(i+28,4,'V')
         managerTable.addTable(tableVip)
 
     managerTable.afficherTables()
-    eu= type_cuisine('eu','Europe','S1')
-    azi = type_cuisine('azy', 'Asie', 'S1')
-    ads = type_cuisine('as', 'Amérique du Sud', 'S1')
-    adn = type_cuisine('an', 'Amérique du Nord', 'S1')
-    afri = type_cuisine('af', 'Afrique', 'S1')
-    vip = type_cuisine('vip', 'VIP', 'S2')
+    eu= type_cuisine('eu','Europe','B')
+    azi = type_cuisine('azy', 'Asie', 'B')
+    ads = type_cuisine('as', 'Amérique du Sud', 'B')
+    adn = type_cuisine('an', 'Amérique du Nord', 'B')
+    afri = type_cuisine('af', 'Afrique', 'B')
+    vip = type_cuisine('vip', 'VIP', 'V')
     managerCuisine.addCuisine(eu,azi,ads,adn,afri,vip)
     managerCuisine.displayList()
 
@@ -100,4 +100,4 @@ def afficherManager():
     managerCuisine.displayList()
     managerTable.afficherTables()
 if __name__ == '__main__':
-    main()
+    dataBase()
