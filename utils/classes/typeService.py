@@ -11,7 +11,7 @@ class TypeService:
         post:initialise l'instance
         '''
         assert isinstance(idService, str) and idService == "V" or idService == "B", "l'id qu'il faut entrer est soit V ou B."
-        assert isinstance(nom,str) and nom == "VIP" or nom == "basic", "le nom qu'il faut entrer est soit VIP ou basic."
+        assert isinstance(nom,str) and nom == "VIP" or nom == "Basique", "le nom qu'il faut entrer est soit VIP ou basique."
         assert isinstance(idEtage,int) and idEtage >= 0 , "le numero de l'etage doit etre un nombre strictement superieur a 0."
         self.__idService = idService
         self.__nom = nom

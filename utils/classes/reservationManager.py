@@ -46,14 +46,11 @@ class ReservationManager:
         :param str name: Le nom de la réservation à trouver.
         :return: L'objet Reservation correspondant, ou None si non trouvé.
         """
-        try:
-            if not isinstance(name, str):
-                raise TypeError("La valeur donnée n'est pas une chaîne de caractères.")
-            for reservation in self.reservations:
-                if reservation.nom == name:
-                    return reservation
-        except TypeError as e:
-            print(e)
+        if not isinstance(name, str):
+            raise TypeError("La valeur donnée n'est pas une chaîne de caractères.")
+        for reservation in self.reservations:
+            if reservation.nom == name:
+                return reservation
 
     def findReservationByTable(self, table):
         """
@@ -65,17 +62,14 @@ class ReservationManager:
         :param int table: Le numéro de la table.
         :return: Liste des réservations pour cette table.
         """
-        try:
-            if not isinstance(table, int):
-                raise TypeError("La valeur donnée n'est pas un entier.")
-            reservations_for_table = []
-            for reservation in self.reservations:
-                if reservation.num_table == table:
-                    reservations_for_table.append(reservation)
+        if not isinstance(table, int):
+            raise TypeError("La valeur donnée n'est pas un entier.")
+        reservations_for_table = []
+        for reservation in self.reservations:
+            if reservation.numTable == table:
+                reservations_for_table.append(reservation)
 
-            return reservations_for_table
-        except TypeError as e:
-            print(e)
+        return reservations_for_table
 
     def affichage(self):
         """
