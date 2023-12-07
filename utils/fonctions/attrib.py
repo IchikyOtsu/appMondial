@@ -10,7 +10,6 @@ def attribution(list, managerRes, managerTable, managerCuisine):
     '''
     nomClient, numTel, dateHeure, idTypeCuisine, pmr, bb,nbr = list
     cuisine = managerCuisine.findCuisineById(idTypeCuisine)
-    print(cuisine)
     typeServ = cuisine.idService
     
     
