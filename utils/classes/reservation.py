@@ -193,3 +193,32 @@ class Reservation:
         if not (isinstance(new_bb,int) and new_bb >= 0):
             raise ValueError("bb doit etre un chiffre plus grand ou egale à 0.")
         self.__bb = new_bb
+    
+    def to_json(self):
+        # Convertir les attributs du type de service en un dictionnaire JSON
+        return {
+            "nom": self.nom,
+            "telNum": self.telNum,
+            "numTable": self.numTable,
+            "dateHeure": self.dateHeure,
+            "idCuisine": self.idCuisine,
+            "pmr": self.pmr,
+            "bb": self.bb,
+            "nbrClient": self.nbrClient,
+            "idRes": self.idRes
+        }
+
+    @classmethod
+    def from_json(cls, data):
+        # Créez une instance de TypeService à partir d'un dictionnaire JSON
+        return cls(
+            nom=data.get("nom"),
+            telNum=data.get("telNum"),
+            numTable=data.get("numTable"),
+            dateHeure=data.get("dateHeure"),
+            idCuisine=data.get("idCuisine"),
+            pmr=data.get("pmr"),
+            bb=data.get("bb"),
+            nbrClient=data.get("nbrClient"),
+            idRes=data.get("idRes")
+        )

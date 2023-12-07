@@ -81,33 +81,18 @@ class ReservationManager:
         for reservation in self.reservations:
             print(reservation)
 
-    def to_json(self):
-        # Convertir les attributs du gestionnaire en un dictionnaire JSON
-        return {
-            "reservations": self.reservations,
-            # Ajoutez d'autres attributs ici
-        }
-    @classmethod
-    def from_json(cls, data):
-        # Créez une instance du gestionnaire à partir d'un dictionnaire JSON
-        manager = cls()
-        manager.reservations = data.get("reservations", [])
-        # Définissez d'autres attributs ici
-        return manager
     
     def to_json(self):
-        # Convertir la liste de tables en une liste de dictionnaires JSON
-        reservations_json = [table.to_json() for table in self.tables]
+        reservations_json = [reservations.to_json() for reservations in self.reservations]
         return {
-            "tables": tables_json
+            "reservations": reservations_json
         }
 
     @classmethod
     def from_json(cls, data):
-        # Créer une instance de TableManager à partir d'un dictionnaire JSON
         manager = cls()
-        tables_data = data.get("tables", [])
-        for table_data in tables_data:
-            table = Table.from_json(table_data)
-            manager.addTable(table)
+        reservations_data = data.get("reservations", [])
+        for reservations_data in reservations_data:
+            reservations = Reservation.from_json(reservations_data)
+            manager.addReservation(reservations)
         return manager

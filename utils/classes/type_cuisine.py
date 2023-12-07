@@ -111,7 +111,7 @@ class type_cuisine:
     @classmethod
     def from_json(cls, data):
         return cls(
-            idCuisine=data.get("idCuisine"),
-            nomTypeCuisine=data.get("nomTypeCuisine"),
+            id=data.get("idCuisine"),
+            nom=data.get("nomTypeCuisine"),
             idService=data.get("idService")
         )

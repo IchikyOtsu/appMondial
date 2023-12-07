@@ -1,6 +1,7 @@
 from utils.classes.reservationManager import ReservationManager
 from utils.classes.tableManager import TableManager
 from utils.classes.type_cuisine_manager import type_cuisine_manager
+from utils.classes.type_cuisine import	type_cuisine
 
 def attribution(list, managerRes, managerTable, managerCuisine):
     '''
@@ -9,7 +10,10 @@ def attribution(list, managerRes, managerTable, managerCuisine):
     '''
     nomClient, numTel, dateHeure, idTypeCuisine, pmr, bb,nbr = list
     cuisine = managerCuisine.findCuisineById(idTypeCuisine)
+    print(cuisine)
     typeServ = cuisine.idService
+    
+    
     for table in managerTable.tables:
         if table.capaciteTable >= nbr and table.idService == typeServ:
             listeRes = managerRes.findReservationByTable(table.numTable)

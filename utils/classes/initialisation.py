@@ -72,11 +72,14 @@ class Initialisateur:
             if Path(self.fichier_sauvegarde).exists():
                 with open(self.fichier_sauvegarde, 'r', encoding='utf-8') as f:
                     data = json.load(f)
+                    # print(data)
                     # Charger les gestionnaires à partir du dictionnaire JSON
                     self.reservation_manager = ReservationManager.from_json(data.get("reservation_manager", {}))
                     self.table_manager = TableManager.from_json(data.get("table_manager", {}))
                     self.typeServManager = TypeServiceManager.from_json(data.get("typeServManager", {}))
+                    # print(self.typeServManager.services[1].idService)
                     self.typeCuisineManager = type_cuisine_manager.from_json(data.get("typeCuisineManager", {}))
+                    # print(self.typeCuisineManager.cuisine_list)
             else:
                 self.initialiser_managers()
         except (json.JSONDecodeError, FileNotFoundError):

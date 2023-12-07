@@ -19,7 +19,6 @@ def main():
     managerTable = init.table_manager
     managerService = init.typeServManager
     managerCuisine = init.typeCuisineManager
-
     liste = argParse(managerRes)
 
     if liste == False:

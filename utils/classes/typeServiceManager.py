@@ -1,3 +1,4 @@
+from utils.classes.typeService import TypeService
 class TypeServiceManager:
     def __init__(self):
         '''
@@ -65,6 +66,6 @@ class TypeServiceManager:
         manager = cls()
         services_data = data.get("services", [])
         for services_data in services_data:
-            services = services.from_json(services_data)
+            services = TypeService.from_json(services_data)
             manager.addService(services)
         return manager
