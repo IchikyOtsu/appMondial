@@ -1,7 +1,7 @@
 import argparse,datetime
 from utils.fonctions.supprimerRes import supprimerRes
 
-def argParse(managerRes):
+def argParse(managerRes,formData):
     '''
         Permet de prendre la reservation en ligne de commande en entrant divers arguments ou de supprimer une réservation.
 
@@ -24,7 +24,13 @@ def argParse(managerRes):
 
 
     args = parser.parse_args()
-
+    args.nom = formData["nom"]
+    args.tel = formData["tel"]
+    args.nbr = formData["nbPers"]
+    args.pmr = formData["nbPmr"]
+    args.bb = formData["nbBb"]
+    args.dh = formData["dateHeure"]
+    args.TC = formData["typeCuisine"]
 
 
     if args.a:
@@ -37,8 +43,8 @@ def argParse(managerRes):
             args.nom).isalpha(), "Il faut que le nom soit écrit avec des charactères alphabétiques Exemple: Hugo"
         assert isinstance(args.tel, str) and str(
             args.tel).isnumeric(), "Il faut que le numéro de téléphone soit écrit avec des charactères numériques: 0468 78 33 99 "
-        assert datetime.datetime.strptime(args.dh,
-                                          '%Y-%m-%d %H:%M'), "La date et heure de la réservation (format AAAA-MM-JJ HH:MM). Exemple: '2023-10-10 19:00' Vous devez mettre cette date entre '' ou guillemet. "
+        #assert datetime.datetime.strptime(args.dh,
+         #                                 '%Y-%m-%d %H:%M'), "La date et heure de la réservation (format AAAA-MM-JJ HH:MM). Exemple: '2023-10-10 19:00' Vous devez mettre cette date entre '' ou guillemet. "
         assert str(args.TC) in ["eu", "azy", "an", "as", "af",
                                 "VIP"], "ID doit être du type de cuisine, les choix sont: Europe(eu), Asie (azy), Amérique du Nord/Sud (as/an), Afrique (af),VIP. Veuillez entrer l'id (PAS le nom complet.)"
         assert isinstance(int(args.pmr), int) and int(

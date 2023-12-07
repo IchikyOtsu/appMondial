@@ -12,14 +12,23 @@ from utils.classes.type_cuisine import type_cuisine
 from utils.fonctions.attrib import attribution
 from utils.fonctions.verifRes import verifRes
 from utils.fonctions.supprimerRes import supprimerRes
+import eel
+
 def main():
+    eel.init("web")
+    eel.start("index.html")
+
+@eel.expose
+def mainGUI():
     init = initial()
     # Utilisation des managers
     managerRes = init.reservation_manager
     managerTable = init.table_manager
     managerService = init.typeServManager
     managerCuisine = init.typeCuisineManager
-    liste = argParse(managerRes)
+    
+    dataJS = eel.exportPython()()
+    liste = argParse(managerRes,dataJS)
 
     if liste == False:
         managerRes.affichage()

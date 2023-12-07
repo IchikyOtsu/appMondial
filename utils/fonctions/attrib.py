@@ -14,7 +14,7 @@ def attribution(list, managerRes, managerTable, managerCuisine):
     
     
     for table in managerTable.tables:
-        if table.capaciteTable >= nbr and table.idService == typeServ:
+        if int(table.capaciteTable) >= int(nbr) and table.idService == typeServ:
             listeRes = managerRes.findReservationByTable(table.numTable)
             table_disponible = True
             for res in listeRes:

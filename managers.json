@@ -33,6 +33,28 @@
                 "bb": 5,
                 "nbrClient": 4,
                 "idRes": 4
+            },
+            {
+                "nom": "Bryce",
+                "telNum": "123414",
+                "numTable": 1,
+                "dateHeure": "2023-12-10T22:17",
+                "idCuisine": "eu",
+                "pmr": "5",
+                "bb": "2",
+                "nbrClient": "2",
+                "idRes": 5
+            },
+            {
+                "nom": "feaf",
+                "telNum": "123414",
+                "numTable": 2,
+                "dateHeure": "2023-12-10T22:17",
+                "idCuisine": "eu",
+                "pmr": "5",
+                "bb": "2",
+                "nbrClient": "2",
+                "idRes": 6
             }
         ]
     },

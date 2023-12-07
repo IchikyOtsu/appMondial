@@ -23,10 +23,10 @@ class Reservation:
         #assert isinstance(datetime.strptime(dateHeure, "%Y-%m-%d %H:%M"),datetime), "La date doit est sous forme de année-mois-jour heure:minute ."
         assert isinstance(numTable, int) and numTable > 0, "La table doit est un chiffre strictement positif."
         assert isinstance(idCuisine, str) and idCuisine in ["eu", "azy", "af", "as", "an", "VIP"], "L'id cuisine doit être sous forme de deux lettre qui represente une cuisine du monde. Exemple eu,az,af,an,as."
-        assert isinstance(pmr, int) and pmr >= 0, "Il faut indiquer le nombre de personne pmr."
-        assert isinstance(bb, int) and bb >= 0, "Il faut indiquer le nombre de bb."
+        assert isinstance(int(pmr), int) and int(pmr) >= 0, "Il faut indiquer le nombre de personne pmr."
+        assert isinstance(int(bb), int) and int(bb) >= 0, "Il faut indiquer le nombre de bb."
         assert isinstance(idRes, int) and idRes >= 1, "il faut ajouter un id supperieur a 0."
-        assert isinstance(nbrClient, int) and nbrClient >= 1, "il faut metre un chifffre superieur a 1"
+        assert isinstance(int(nbrClient), int) and int(nbrClient) >= 1, "il faut metre un chifffre superieur a 1"
         self.__nom = nom
         self.__telNum = telNum
         self.__numTable = numTable
