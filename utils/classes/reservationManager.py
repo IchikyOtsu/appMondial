@@ -2,82 +2,87 @@ from utils.classes.reservation import Reservation
 
 class ReservationManager:
     def __init__(self):
-        '''
-        pre:--
-        post: initialisation de l'instance qui comporte une liste
-        '''
+        """
+        Pre: --
+        Post: Initialisation de l'instance avec une liste vide de réservations.
+        """
         self.reservations = []
-    def addReservation(self,addRes):
-        '''
-        :param str addRes:newReservation
-        :add newReservation in liste
 
-        pre: addRes == instance de Reservation
-        post: ajoute des donnees dans la list de l'instance
-        '''
-        assert isinstance(addRes, Reservation), "ce n'est pas une instance de Reservation"
-        self.reservations.append(addRes)
-    def removeReservation(self ,rmvRes):
-        '''
-        :param str rmvRes:liste
-        :remove a name in liste
-        pre: entree une nouvelle instance
-            rmvRes in self.reservations
-            rmvRes == instance de Reservation
-        post: retrait des donnees dans la list de l'instance
-        '''
-        #assert isinstance(rmvRes,Reservation)and rmvRes in self.reservations, "La 'instance doit faire partie de l'instance Reservations et faire partie de la liste."
+    def add_reservation(self, new_reservation):
+        """
+        Ajoute une nouvelle réservation à la liste.
+
+        Pre: new_reservation doit être une instance de Reservation.
+        Post: new_reservation est ajoutée à la liste des réservations.
+
+        :param Reservation new_reservation: La nouvelle réservation à ajouter.
+        """
+        assert isinstance(new_reservation, Reservation), "Ce n'est pas une instance de Reservation"
+        self.reservations.append(new_reservation)
+
+    def remove_reservation(self, reservation_to_remove):
+        """
+        Supprime une réservation de la liste.
+
+        Pre: reservation_to_remove doit être une instance de Reservation et faire partie de self.reservations.
+        Post: reservation_to_remove est retirée de la liste des réservations.
+
+        :param Reservation reservation_to_remove: La réservation à supprimer.
+        """
         try:
-            if not (isinstance(rmvRes,Reservation)and rmvRes in self.reservations):
-                raise TypeError("l'element entre doit etre une instance de Reservation qui fait partie de la liste reservation.")
-            self.reservations.remove(rmvRes)
+            if not (isinstance(reservation_to_remove, Reservation) and reservation_to_remove in self.reservations):
+                raise TypeError("L'élément à supprimer doit être une instance de Reservation présente dans la liste.")
+            self.reservations.remove(reservation_to_remove)
         except TypeError as e:
             print(e)
-    def findReservationByName(self ,nom):
-        '''
-        :param str nom:
-        :find a name in liste
-        pre: entre un nom
-            nom in self.reservations
-            nom == str
-        post: retourne l'object
-        '''
-        try:
-            if not isinstance(nom, str):
-                raise TypeError("La valeur donnée n'est pas un string")
-            for i in self.reservations:
 
-                if i.nom == nom:
-                    return i
-        except TypeError as e :
+    def find_reservation_by_name(self, name):
+        """
+        Trouve une réservation par son nom.
+
+        Pre: name doit être une chaîne de caractères.
+        Post: Retourne l'objet Reservation correspondant si trouvé, sinon None.
+
+        :param str name: Le nom de la réservation à trouver.
+        :return: L'objet Reservation correspondant, ou None si non trouvé.
+        """
+        try:
+            if not isinstance(name, str):
+                raise TypeError("La valeur donnée n'est pas une chaîne de caractères.")
+            for reservation in self.reservations:
+                if reservation.nom == name:
+                    return reservation
+        except TypeError as e:
             print(e)
-        except:
-            print("erreur car pas dedans")
-    def findReservationByTable(self,table):
+
+    def find_reservation_by_table(self, table):
+        """
+        Trouve les réservations pour une table spécifique.
+
+        Pre: table doit être un entier.
+        Post: Retourne une liste des réservations pour cette table.
+
+        :param int table: Le numéro de la table.
+        :return: Liste des réservations pour cette table.
+        """
         try:
             if not isinstance(table, int):
-                raise TypeError("La valeur donnée n'est pas un string . findReservationByTable")
-            listeTable = []
-            for i in self.reservations:
+                raise TypeError("La valeur donnée n'est pas un entier.")
+            reservations_for_table = []
+            for reservation in self.reservations:
+                if reservation.num_table == table:
+                    reservations_for_table.append(reservation)
 
-                if i.numTable == table:
-                    listeTable.append(i)
-
-
-            return listeTable
-
+            return reservations_for_table
         except TypeError as e:
             print(e)
-        except:
-            print("erreur car pas dedans")
 
+    def display_reservations(self):
+        """
+        Affiche toutes les réservations.
 
-
-    def affichage(self):
-        '''
-        :print:liste
-        pre:--
-        post: retour chaque reservations de l'instance
-        '''
-        for i in self.reservations:
-            print(i)
+        Pre: --
+        Post: Affiche chaque réservation de la liste.
+        """
+        for reservation in self.reservations:
+            print(reservation)
