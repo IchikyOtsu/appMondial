@@ -100,4 +100,4 @@ def afficherManager():
     managerCuisine.displayList()
     managerTable.afficherTables()
 if __name__ == '__main__':
-    dataBase()
+    main()
