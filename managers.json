@@ -55,6 +55,39 @@
                 "bb": "2",
                 "nbrClient": "2",
                 "idRes": 6
+            },
+            {
+                "nom": "T",
+                "telNum": "0492097475",
+                "numTable": 1,
+                "dateHeure": "2023-12-08T00:26",
+                "idCuisine": "eu",
+                "pmr": "0",
+                "bb": "0",
+                "nbrClient": "2",
+                "idRes": 7
+            },
+            {
+                "nom": "foyu",
+                "telNum": "0492097475",
+                "numTable": 1,
+                "dateHeure": "2023-12-22T01:31",
+                "idCuisine": "as",
+                "pmr": "2",
+                "bb": "0",
+                "nbrClient": "2",
+                "idRes": 8
+            },
+            {
+                "nom": "mouloud",
+                "telNum": "0492097475",
+                "numTable": 27,
+                "dateHeure": "2023-12-07T22:31",
+                "idCuisine": "af",
+                "pmr": "14",
+                "bb": "1",
+                "nbrClient": "15",
+                "idRes": 9
             }
         ]
     },

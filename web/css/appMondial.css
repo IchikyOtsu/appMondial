@@ -58,3 +58,54 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+.tabcontent {
+    display: none;
+    padding: 0.5em 1em;
+    border: 1px solid #888;
+    border-radius: 0.5em;
+    border-top: none;
+}
+.tab button {
+    background-color: inherit;
+    float: left;
+    outline: none;
+    cursor: pointer;
+    padding: 1em 2.5em;
+    transition: 0.3s;
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 1em 3em 0 0;
+    border-bottom: transparent;
+    margin-top:0.25em;
+}
+.tab button:first-child{
+    margin-left: 2em;
+} 
+
+.tabcontent {
+    animation: fadeEffect 0s;
+    box-shadow: rgba(128,128,128,0.5)  0 0 0.5em;
+    background-color: var( --section-bg-color );
+}
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.table-container {
+    margin: 20px;
+  }
+  
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .custom-table th, .custom-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .custom-table th {
+    background-color: #f2f2f2;
+  }
