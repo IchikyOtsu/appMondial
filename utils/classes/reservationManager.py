@@ -8,7 +8,7 @@ class ReservationManager:
         """
         self.reservations = []
 
-    def add_reservation(self, new_reservation):
+    def addReservation(self, new_reservation):
         """
         Ajoute une nouvelle réservation à la liste.
 
@@ -20,7 +20,7 @@ class ReservationManager:
         assert isinstance(new_reservation, Reservation), "Ce n'est pas une instance de Reservation"
         self.reservations.append(new_reservation)
 
-    def remove_reservation(self, reservation_to_remove):
+    def removeReservation(self, reservation_to_remove):
         """
         Supprime une réservation de la liste.
 
@@ -36,7 +36,7 @@ class ReservationManager:
         except TypeError as e:
             print(e)
 
-    def find_reservation_by_name(self, name):
+    def findReservationByName(self, name):
         """
         Trouve une réservation par son nom.
 
@@ -55,7 +55,7 @@ class ReservationManager:
         except TypeError as e:
             print(e)
 
-    def find_reservation_by_table(self, table):
+    def findReservationByTable(self, table):
         """
         Trouve les réservations pour une table spécifique.
 
@@ -77,7 +77,7 @@ class ReservationManager:
         except TypeError as e:
             print(e)
 
-    def display_reservations(self):
+    def affichage(self):
         """
         Affiche toutes les réservations.
 
