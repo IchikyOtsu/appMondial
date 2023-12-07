@@ -9,21 +9,24 @@ class Reservation:
             telNum == str
             numTable == int and numTable > 0
             dateHeure == datetime
-            idCuisine == str and len(idCuisine) == 2
+            idCuisine == str and idCuisine == [eu,azy,af,an,as,VIP]
             pmr == int and pmr >= 0
             bb == int and bb >= 0
             idRes == int and idRes > 0
+            nbrClient == int and nbrClient >= 1
         post :Initialise des données a une instance
         '''
-        assert isinstance(nom, str) , "le nom doit etre une chaine de charactères."
-        assert isinstance(telNum,str) , "Le numero de telephone est invalide. Veuiller utiliser le +32 si le numéro est belge."
+        assert isinstance(nom, str), "le nom doit etre une chaine de charactères."
+        assert isinstance(telNum, str), "Le numero de telephone est invalide. Veuiller utiliser le +32 si le numéro est belge."
         #assert isinstance(datetime.strptime(dateHeure, "%Y-%m-%d %H:%M"),datetime), "La date doit est sous forme de année-mois-jour heure:minute ."
-        assert isinstance(numTable,int) and numTable > 0 , "La table doit est un chiffre strictement positif."
-        assert isinstance(idCuisine,str) and len(idCuisine) == 2 or len(idCuisine) == 3, "L'id cuisine doit être sous forme de deux lettre qui represente une cuisine du monde. Exemple eu,azy,af,an,as,VIP."
-        assert isinstance(pmr,int)and pmr >= 0 , "Il faut indiquer le nombre de personne pmr."
-        assert isinstance(bb,int) and bb >= 0 , "Il faut indiquer le nombre de bb."
-        assert isinstance(idRes,int) and idRes >= 1, "il faut ajouter un id supperieur a 0."
-        assert isinstance(nbrClient,int) and nbrClient >= 1, "il faut metre un chifffre superieur a 1"
+        assert isinstance(numTable, int) and numTable > 0 , "La table doit est un chiffre strictement positif."
+        #assert isinstance(idCuisine, str) and len(idCuisine) == 2 or len(idCuisine) == 3, "L'id cuisine doit être sous forme de deux lettre qui represente une cuisine du monde. Exemple eu,azy,af,an,as,VIP."
+        assert isinstance(idCuisine, str) and idCuisine == "eu" and idCuisine == "azy" and idCuisine == "af" and idCuisine == "as" and idCuisine == "an" and idCuisine == "VIP"
+        assert isinstance(nbrClient,int) and nbrClient == 2 and nbrClient == 4 and nbrClient == 15, "L'id cuisine doit être sous forme de deux lettre qui represente une cuisine du monde. Exemple eu,az,af,an,as."
+        assert isinstance(pmr, int) and pmr >= 0, "Il faut indiquer le nombre de personne pmr."
+        assert isinstance(bb, int) and bb >= 0, "Il faut indiquer le nombre de bb."
+        assert isinstance(idRes, int) and idRes >= 1, "il faut ajouter un id supperieur a 0."
+        assert isinstance(nbrClient, int) and nbrClient >= 1, "il faut metre un chifffre superieur a 1"
         self.__nom = nom
         self.__telNum = telNum
         self.__numTable = numTable
@@ -49,7 +52,7 @@ class Reservation:
     def nom(self,  new_nom:str):
         '''
         pre: new_nom == str
-        post: initialise un nouveau nom a l'instance
+        post: initialise d'un nouveau nom a l'instance
         '''
         #assert isinstance(new_nom,str) , "Le nom n'est pas un chaine de character."
         try:
@@ -90,8 +93,8 @@ class Reservation:
         '''
         #assert isinstance(new_telNum,str), "Le numero de telephone est invalide. Veuiller utiliser le +32 si le numéro est belge."
         try:
-            if not isinstance(new_telNum, str) and "+" in new_telNum :
-                raise TypeError("le numero de telephone doit être une chaine de caractère en commencant avec un +. exemple '+32037269382' ")
+            if not isinstance(new_telNum, str):
+                raise TypeError("le numero de telephone doit être une chaine de caractère")
             self.__telNum = new_telNum
         except TypeError as e:
             print(e)
@@ -121,7 +124,7 @@ class Reservation:
     @nbrClient.setter
     def nbrClient(self, new_nbrClient):
         '''
-         pre: nbrClient == int and nbrClient  == 2,4,15
+         pre: nbrClient == int and nbrClient  >= 1
          post: initialise une nouvelle nbr client a l'instance
         '''
         #assert isinstance(new_nbrClient, int) and new_nbrClient > 0, "La nbr client doit est un chiffre strictement positif."
@@ -129,8 +132,8 @@ class Reservation:
         try:
             if not isinstance(new_nbrClient,int):
                 raise TypeError("le nbrClient doit être un chiffre")
-            if not (isinstance(new_nbrClient,int) and new_nbrClient == 2 and new_nbrClient == 4 and new_nbrClient == 15):
-                raise ValueError("le nbrClient doit être un chiffre qui égal a 2, 4 ou 15")
+            if not (isinstance(new_nbrClient,int) and len(new_nbrClient) >= 1):
+                raise ValueError("le nbrClient doit être un chiffre plus grand ou égale a 1")
             self.__numTable = new_nbrClient
         except (TypeError, ValueError) as e:
             print(e)
@@ -159,15 +162,15 @@ class Reservation:
     @idCuisine.setter
     def idCuisine(self, new_idCuisine):
         '''
-        pre: idCuisine == str and len(idCuisine) == 2
+        pre: idCuisine == str and idCuisine == [eu,azy,af,as,an , VIP]
         post: initialise une nouvelle id de cuisine a l'instance
         '''
         #assert isinstance(new_idCuisine, str) and len(new_idCuisine) == 2, "L'id cuisine doit être sous forme de deux lettre qui represente une cuisine du monde. Exemple eu,az,af,an,as."
         try:
             if not isinstance(new_idCuisine, str):
                 raise TypeError("idCuisine est un chaine de caractère")
-            if not (isinstance(new_idCuisine, str) and new_idCuisine == "eu" and new_idCuisine == "azy" and new_idCuisine == "af" and new_idCuisine == "as" and new_idCuisine == "an" ):
-                raise ValueError("idCuisine est un chaine de caractère qui est égal a eu , azy , af , an ou as")
+            if not (isinstance(new_idCuisine, str) and new_idCuisine == "eu" and new_idCuisine == "azy" and new_idCuisine == "af" and new_idCuisine == "as" and new_idCuisine == "an" and new_idCuisine == "VIP"):
+                raise ValueError("idCuisine est un chaine de caractère qui est égal a eu , azy , af , VIP, an ou as")
             self.__idCuisine = new_idCuisine
         except (TypeError, ValueError) as e:
             print(e)
@@ -188,7 +191,7 @@ class Reservation:
             if not (isinstance(new_pmr,int) and new_pmr >= 0):
                 raise ValueError("les pmr doit être un chiffre plus grand ou égal à 0.")
             self.__pmr = new_pmr
-        except (ValueError,TypeError) as e:
+        except (ValueError, TypeError) as e:
             print(e)
 
     @property
