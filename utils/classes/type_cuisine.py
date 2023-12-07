@@ -11,7 +11,6 @@ class type_cuisine:
             nom == str
         POST : Assignation des valeurs d'entrée aux attributs correspondants.
         '''
-        assert isinstance(id, str) in ["eu","azy","af","an" ,"as" , "VIP"] , "l'id de cuisine doit être  eu,azy,af,an ,as ou VIP"
         assert isinstance(nom, str), "le nom de la cuisine doit etre une chaine de caractère"
         self._idCuisine = id
         self._nomTypeCuisine = nom

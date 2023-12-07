@@ -42,17 +42,17 @@ class type_cuisine_manager:
     Méthodes utilisées pour ajouter, supprimer et afficher une cuisine de la liste.
     '''
 
-    def addCuisine(self, *reservations):
+    def addCuisine(self, *newCuisine):
         '''
         Ajoute des types de cuisine à la liste.
 
-        PRE : Les réservations doivent être des objets de type TypeCuisine non présents dans la liste.
+        PRE : newCuisine doit être un/des objets de type TypeCuisine non présents dans la liste.
         POST : Ajoute les réservations à la liste des types de cuisine.
         '''
-        assert isinstance(reservations, type_cuisine), "l'instance ne fait pas partie de type_cuisine"
-        for reservation in reservations:
-            if reservation not in self.cuisine_list:
-                self.cuisine_list.append(reservation)
+        assert not isinstance(newCuisine, type_cuisine), "l'instance ne fait pas partie de type_cuisine"
+        for cuisine in newCuisine:
+            if cuisine not in self.cuisine_list:
+                self.cuisine_list.append(cuisine)
 
     def removeCuisine(self, reservations):
         '''
