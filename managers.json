@@ -4,17 +4,6 @@
             {
                 "nom": "John",
                 "telNum": "471371916",
-                "numTable": 1,
-                "dateHeure": "2023-12-12 14:14",
-                "idCuisine": "eu",
-                "pmr": 4,
-                "bb": 5,
-                "nbrClient": 4,
-                "idRes": 1
-            },
-            {
-                "nom": "John",
-                "telNum": "471371916",
                 "numTable": 2,
                 "dateHeure": "2023-12-12 14:14",
                 "idCuisine": "eu",

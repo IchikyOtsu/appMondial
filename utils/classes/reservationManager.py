@@ -20,6 +20,12 @@ class ReservationManager:
         assert isinstance(new_reservation, Reservation), "Ce n'est pas une instance de Reservation"
         self.reservations.append(new_reservation)
 
+    def findReservationById(self, reservation_id):
+        for reservation in self.reservations:
+            if reservation.idRes == reservation_id:
+                return reservation
+        return None
+    
     def removeReservation(self, reservation_to_remove):
         """
         Supprime une réservation de la liste.
