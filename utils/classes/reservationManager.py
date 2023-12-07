@@ -46,14 +46,11 @@ class ReservationManager:
         :param str name: Le nom de la réservation à trouver.
         :return: L'objet Reservation correspondant, ou None si non trouvé.
         """
-        try:
-            if not isinstance(name, str):
-                raise TypeError("La valeur donnée n'est pas une chaîne de caractères.")
-            for reservation in self.reservations:
-                if reservation.nom == name:
-                    return reservation
-        except TypeError as e:
-            print(e)
+        if not isinstance(name, str):
+            raise TypeError("La valeur donnée n'est pas une chaîne de caractères.")
+        for reservation in self.reservations:
+            if reservation.nom == name:
+                return reservation
 
     def findReservationByTable(self, table):
         """
