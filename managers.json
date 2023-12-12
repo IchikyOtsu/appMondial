@@ -1,0 +1,301 @@
+{
+    "reservation_manager": {
+        "reservations": [
+            {
+                "nom": "John",
+                "telNum": "471371916",
+                "numTable": 2,
+                "dateHeure": "2023-12-12 14:14",
+                "idCuisine": "eu",
+                "pmr": 4,
+                "bb": 5,
+                "nbrClient": 4,
+                "idRes": 2
+            },
+            {
+                "nom": "John",
+                "telNum": "471371916",
+                "numTable": 3,
+                "dateHeure": "2023-12-12 14:14",
+                "idCuisine": "eu",
+                "pmr": 4,
+                "bb": 5,
+                "nbrClient": 4,
+                "idRes": 3
+            },
+            {
+                "nom": "John",
+                "telNum": "471371916",
+                "numTable": 4,
+                "dateHeure": "2023-12-12 14:14",
+                "idCuisine": "eu",
+                "pmr": 4,
+                "bb": 5,
+                "nbrClient": 4,
+                "idRes": 4
+            },
+            {
+                "nom": "Bryce",
+                "telNum": "123414",
+                "numTable": 1,
+                "dateHeure": "2023-12-10T22:17",
+                "idCuisine": "eu",
+                "pmr": "5",
+                "bb": "2",
+                "nbrClient": "2",
+                "idRes": 5
+            },
+            {
+                "nom": "feaf",
+                "telNum": "123414",
+                "numTable": 2,
+                "dateHeure": "2023-12-10T22:17",
+                "idCuisine": "eu",
+                "pmr": "5",
+                "bb": "2",
+                "nbrClient": "2",
+                "idRes": 6
+            },
+            {
+                "nom": "T",
+                "telNum": "0492097475",
+                "numTable": 1,
+                "dateHeure": "2023-12-08T00:26",
+                "idCuisine": "eu",
+                "pmr": "0",
+                "bb": "0",
+                "nbrClient": "2",
+                "idRes": 7
+            },
+            {
+                "nom": "foyu",
+                "telNum": "0492097475",
+                "numTable": 1,
+                "dateHeure": "2023-12-22T01:31",
+                "idCuisine": "as",
+                "pmr": "2",
+                "bb": "0",
+                "nbrClient": "2",
+                "idRes": 8
+            },
+            {
+                "nom": "mouloud",
+                "telNum": "0492097475",
+                "numTable": 27,
+                "dateHeure": "2023-12-07T22:31",
+                "idCuisine": "af",
+                "pmr": "14",
+                "bb": "1",
+                "nbrClient": "15",
+                "idRes": 9
+            }
+        ]
+    },
+    "table_manager": {
+        "tables": [
+            {
+                "numTable": 1,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 2,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 3,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 4,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 5,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 6,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 7,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 8,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 9,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 10,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 11,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 12,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 13,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 14,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 15,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 16,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 17,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 18,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 19,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 20,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 21,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 22,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 23,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 24,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 25,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 26,
+                "capaciteTable": 4,
+                "idService": "B"
+            },
+            {
+                "numTable": 27,
+                "capaciteTable": 15,
+                "idService": "B"
+            },
+            {
+                "numTable": 28,
+                "capaciteTable": 4,
+                "idService": "V"
+            },
+            {
+                "numTable": 29,
+                "capaciteTable": 4,
+                "idService": "V"
+            },
+            {
+                "numTable": 30,
+                "capaciteTable": 4,
+                "idService": "V"
+            },
+            {
+                "numTable": 31,
+                "capaciteTable": 4,
+                "idService": "V"
+            }
+        ]
+    },
+    "typeServManager": {
+        "services": [
+            {
+                "idService": "V",
+                "nom": "VIP",
+                "idEtage": 1
+            },
+            {
+                "idService": "B",
+                "nom": "Basique",
+                "idEtage": 0
+            }
+        ]
+    },
+    "typeCuisineManager": {
+        "cuisine_list": [
+            {
+                "idCuisine": "eu",
+                "nomTypeCuisine": "Europe",
+                "idService": "B"
+            },
+            {
+                "idCuisine": "azy",
+                "nomTypeCuisine": "Asie",
+                "idService": "B"
+            },
+            {
+                "idCuisine": "as",
+                "nomTypeCuisine": "Amérique du Sud",
+                "idService": "B"
+            },
+            {
+                "idCuisine": "an",
+                "nomTypeCuisine": "Amérique du Nord",
+                "idService": "B"
+            },
+            {
+                "idCuisine": "af",
+                "nomTypeCuisine": "Afrique",
+                "idService": "B"
+            },
+            {
+                "idCuisine": "vip",
+                "nomTypeCuisine": "VIP",
+                "idService": "V"
+            }
+        ]
+    }
+}
