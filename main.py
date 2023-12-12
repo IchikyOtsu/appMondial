@@ -13,10 +13,18 @@ from utils.fonctions.attrib import attribution
 from utils.fonctions.verifRes import verifRes
 from utils.fonctions.supprimerRes import supprimerRes
 import eel
+import json
 
 def main():
     eel.init("web")
     eel.start("index.html")
+
+@eel.expose
+def importJSON():
+    with open("managers.json","r") as file:
+        file = file.read()
+        file = json.loads(file)
+    return file
 
 @eel.expose
 def mainGUI():
