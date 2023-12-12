@@ -20,8 +20,12 @@ function retrieveData(event){
 }
 
 async function affichage(){
-    dataDisplay = await eel.importJSON()()
-    console.log(dataDisplay)
+    dataDisplay = await eel.importJSON()();
+    console.log(dataDisplay);
+    let listReservations = dataDisplay["reservation_manager"]["reservations"];
+    listReservations.forEach(function(reservation){
+        //à compléter pour les lignes du tableau
+    })
 }
 
 
