@@ -34,12 +34,11 @@ def supprimerDuGUI(id):
         managerRes = file["reservation_manager"]["reservations"]
         for res in managerRes:
             if res["idRes"] == id:
-                print(res)
                 managerRes.remove(res)
-                print(file)
     with open("managers.json","w") as final:
         file = json.dumps(file)
         final.write(file)
+        print("Suppression faite !")
 
 
 
