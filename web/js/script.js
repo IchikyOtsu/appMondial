@@ -42,7 +42,7 @@ async function affichage(){
 function init(){
     document.querySelector("form").addEventListener("submit",retrieveData);
     document.querySelector("form").addEventListener("submit",affichage);
-    document.querySelector("body").addEventListener("load",affichage)
+    affichage();
 }
 
 
@@ -75,4 +75,5 @@ function changerTab(tabButton) {  console.log('in changerTab ',tabButton);
     _gebi(tabButton.id).classList.add("active");
     // mémorise le nouveau tab actuel
     idTabActuel = tabButton.id;
+    affichage();
 }
