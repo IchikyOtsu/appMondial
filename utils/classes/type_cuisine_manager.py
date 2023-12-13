@@ -46,8 +46,10 @@ class type_cuisine_manager:
         '''
         Ajoute des types de cuisine à la liste.
 
-        PRE : newCuisine doit être un/des objets de type TypeCuisine non présents dans la liste.
+        PRE : newCuisine à ajouter
         POST : Ajoute les réservations à la liste des types de cuisine.
+
+        Raise : newCuisine doit être un/des objets de type TypeCuisine non présents dans la liste.
         '''
         assert not isinstance(newCuisine, type_cuisine), "l'instance ne fait pas partie de type_cuisine"
         for cuisine in newCuisine:
@@ -58,15 +60,17 @@ class type_cuisine_manager:
         '''
         Supprime des types de cuisine de la liste.
 
-        PRE : Les réservations doivent être des objets de type TypeCuisine présents dans la liste.
+        PRE : Les réservations à supprimer
         POST : Supprime les réservations de la liste des types de cuisine.
+
+        Raise : Les réservations doivent être des objets de type TypeCuisine présents dans la liste.
         '''
-        try:
-            if not (isinstance(reservations, type_cuisine) and reservations in self._cuisine_list):
-                raise ValueError("l'instance a retirer n'est pas une instance de type_cuisine.")
-            self._cuisine_list.remove(reservations)
-        except ValueError as e:
-            print(e)
+        if not isinstance(reservations, type_cuisine):
+            raise ValueError("l'instance a retirer n'est pas une instance de type_cuisine.")
+        if not reservations in self._cuisine_list: 
+            raise ValueError("l'instance a retirer n'est pas dans la liste des type_cuisine.")
+        self._cuisine_list.remove(reservations)
+        
 
     def displayList(self):
         '''
@@ -84,19 +88,17 @@ class type_cuisine_manager:
         '''
         Recherche un type de cuisine par son identifiant.
 
-        PRE : id doit être une chaîne de caractères correspondant à un identifiant de type de cuisine.
+        PRE : id
         POST : Renvoie le type de cuisine correspondant à l'identifiant spécifié s'il existe.
+
+        Raise : id doit être une chaîne de caractères correspondant à un identifiant de type de cuisine.
         '''
-        try:
-            if not isinstance(id,str):
-                raise TypeError("ce n'est pas un str")
-            for i in self.cuisine_list:
-                if i.idCuisine == id:
-                    return i
-        except TypeError as e:
-            print(e)
-        except:
-            print("erreur")
+        
+        if not isinstance(id,str):
+            raise TypeError("ce n'est pas un str")
+        for i in self.cuisine_list:
+            if i.idCuisine == id:
+                return i
 
     def __str__(self):
         '''

@@ -48,8 +48,8 @@ class TableManager:
         '''
         if not isinstance(num, int):
                 raise TypeError("La valeur donnée n'est pas un chiffre")
-        for i in self.reservations:
-            if i.num == num:
+        for i in self.tables:
+            if i.numTable == num:
                 return i
         return None
     
