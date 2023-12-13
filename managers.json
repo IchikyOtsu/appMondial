@@ -11,6 +11,17 @@
                 "bb": "1",
                 "nbrClient": "4",
                 "idRes": 1
+            },
+            {
+                "nom": "T",
+                "telNum": "0492097475",
+                "numTable": 1,
+                "dateHeure": "2024-01-07T22:59",
+                "idCuisine": "eu",
+                "pmr": "0",
+                "bb": "0",
+                "nbrClient": "2",
+                "idRes": 2
             }
         ]
     },

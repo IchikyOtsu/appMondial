@@ -1,6 +1,7 @@
 import unittest
 from utils.classes.reservation import Reservation  
 
+
 class TestReservation(unittest.TestCase):
 
     def setUp(self):
@@ -95,6 +96,7 @@ class TestReservation(unittest.TestCase):
         }
         reservation_from_json = Reservation.from_json(json_data)
         self.assertEqual(reservation_from_json.to_json(), json_data)
+
 
 if __name__ == '__main__':
     unittest.main()

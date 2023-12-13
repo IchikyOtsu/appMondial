@@ -1,28 +1,28 @@
-from datetime import datetime
-class Reservation:
-    '''
-    class used to init a new reservation for a restaurant
-    '''
-    def __init__(self, nom : str , telNum, numTable, dateHeure, idCuisine, pmr=0, bb=0, nbrClient =1,idRes = 1):
-        '''
-        pre :
-            -nom : doit être un str
-            -telNum : doit être un str
-            -numTable : doit être un chiffre strictement plus grand que 0
-            #-dateHeure : doit être une date sous forme "annee-mois-hour heure:minute" (deja vérifier dans une autre fonction
-            -idCuisine : doit être une chaine de caractère qui est égal a eu , azy , af , an , VIP ou as
-            -pmr : doit être un chiffre plus grand ou égal a 0
-            -bb : doit être un chiffre plus grand ou égal a 0
-            -nbrClient : doit être un chiffre strictement plus grand que 1
-            -idRes : doit être un chiffre strictement plus grand que 0
+"""No Import"""
 
-        post :Initialise des données a une instance
-        '''
+
+class Reservation:
+    """
+    class used to init a new reservation for a restaurant
+    """
+    def __init__(self, nom: str, telNum, numTable, dateHeure, idCuisine, pmr=0, bb=0, nbrClient=1, idRes=1):
+        """
+        pre :
+            -le nom doit être une chaine de caractère
+            -le numéro de téléphone (telNum) doit être une chaine de caractère
+            -le numéro de Table doit être un chiffre strictement plus grand que 0
+            -l'identification du type cuisine doit être égale a eu , azy , af , an , VIP ou as
+            -pmr doit être un chiffre plus grand ou égale a 0
+            -bb doit être un chiffre plus grand ou égale a 0
+            -le nombre de Client doit être un chiffre plus grand ou égal a 1
+            -l'identification de la Reservation doit être un strictement plus grand que 0
+        post : création d'une nouvelle instance Reservation
+        """
         assert isinstance(nom, str), "le nom doit etre une chaine de charactères."
-        assert isinstance(telNum, str), "Le numero de telephone est invalide. Veuiller utiliser une chaine de caractère."
-        #assert isinstance(datetime.strptime(dateHeure, "%Y-%m-%d %H:%M"),datetime), "La date doit est sous forme de année-mois-jour heure:minute ."
+        assert isinstance(telNum, str), "Le numero de telephone doit être une chaine de caractère."
         assert isinstance(numTable, int) and numTable > 0, "La table doit est un chiffre strictement positif."
-        assert isinstance(idCuisine, str) and idCuisine in ["eu", "azy", "af", "as", "an", "VIP"], "L'id cuisine doit être sous forme de deux lettre qui represente une cuisine du monde. Exemple eu,az,af,an,as."
+        assert isinstance(idCuisine, str) and idCuisine in ["eu", "azy", "af", "as", "an", "VIP"], \
+            "L'id cuisine doit être égale a eu,az,af,an,as."
         assert isinstance(int(pmr), int) and int(pmr) >= 0, "Il faut indiquer le nombre de personne pmr."
         assert isinstance(int(bb), int) and int(bb) >= 0, "Il faut indiquer le nombre de bb."
         assert isinstance(idRes, int) and idRes >= 1, "il faut ajouter un id supperieur a 0."
@@ -36,26 +36,29 @@ class Reservation:
         self.__bb = bb
         self.__nbrClient = nbrClient
         self.__idRes = idRes
+
     def __str__(self):
-        '''
+        """
         pre : --
-        post :affiche un Object de toutes les donnes de l'instance Reservation
-        '''
-        return f"ID: {self.idRes} nom :{self.nom}, telNum :{self.telNum}, numTable :{self.numTable}, dateHeure :{self.dateHeure}, idCuisine :{self.idCuisine}, pmr :{self.pmr}, bb :{self.bb}, nombre de personne :{self.nbrClient}"
-    '''
+        post :retourne une representation textuel de la reservation
+        """
+        return (f"ID: {self.idRes} nom :{self.nom}, telNum :{self.telNum}, numTable :{self.numTable}"
+                f", dateHeure :{self.dateHeure}, idCuisine :{self.idCuisine}, pmr :{self.pmr}, bb :{self.bb}"
+                f", nombre de personne :{self.nbrClient}")
+    """
     :rest == modification of attribut 
-    '''
+    """
     @property
     def nom(self):
         return self.__nom
+
     @nom.setter
     def nom(self,  new_nom: str):
-        '''
-        pre: new_nom doit être une chaine de caractère
-        post: modification du nom de l'instance Reservation
-        '''
-        #assert isinstance(new_nom,str) , "Le nom n'est pas un chaine de character."
-
+        """
+        pre: --
+        post: modification du nom de l'instance
+            -raise TypeError si le new_nom n'est pas une chaine de caractère
+        """
         if not isinstance(new_nom, str):
             raise TypeError("Le nom n'est pas une chaîne de caractères.")
         self.__nom = new_nom
@@ -66,48 +69,50 @@ class Reservation:
 
     @idRes.setter
     def idRes(self, new_idRes):
-        '''
-        pre: new_idRes doit être un chiffre strictement plus grand que 0
-        post: modification de l'id de Reservation de l'instance de Reservation
-        '''
-        #assert isinstance(new_idRes, int) and new_idRes > 0, "Le id n'est pas un int supperieur a 0."
-        if not isinstance(new_idRes,int):
+        """
+        pre: --
+        post: modification de l'id de Reservation de l'instance
+            - raise TypeError si new_id_res n'est pas un chiffre
+            - raise ValueError si new_id_res n'est pas un chiffre strictement plus grand que 0
+        """
+        if not isinstance(new_idRes, int):
             raise TypeError("l'idRes doit etre un chiffre")
-        if not (isinstance(new_idRes,int) and new_idRes > 0):
+        if not (isinstance(new_idRes, int) and new_idRes > 0):
             raise ValueError("l'idRes doit être strictement plus grand que 0")
-        self.__idRes = new_idRes
+        self.__id_res = new_idRes
 
     @property
     def telNum(self):
         return self.__telNum
+
     @telNum.setter
     def telNum(self, new_telNum):
-        '''
-        pre: new_telNum doit être une chaine de caractère
-        post: modification du numéro de téléphone de l'instance Reservation
-        '''
-        #assert isinstance(new_telNum,str), "Le numero de telephone est invalide. Veuiller utiliser le +32 si le numéro est belge."
+        """
+        pre: --
+        post: modification du numéro de téléphone de l'instance
+            - raise TypeError si le numero de téléphone n'est pas une chaine de caractère
+        """
         if not isinstance(new_telNum, str):
             raise TypeError("le numero de telephone doit être une chaine de caractère")
-        self.__telNum = new_telNum
+        self.__tel_num = new_telNum
 
     @property
     def numTable(self):
         return self.__numTable
+
     @numTable.setter
     def numTable(self, new_numTable):
-        '''
-         pre: new_numTable doit être un chiffre strictement plus grand que 0
-         post: modification du numéro de table attribué a la Reservation
-        '''
-        #assert isinstance(new_numTable, int) and new_numTable > 0, "La table doit est un chiffre strictement positif."
-
-        if not isinstance(new_numTable,int):
+        """
+         pre: --
+         post: modification du numéro de table de l'instance
+            -raise TypeError si le numéro de table n'est pas un chiffre
+            -raise ValueError si le numéro de table n'est pas un chiffre strictement plus grand que 0
+        """
+        if not isinstance(new_numTable, int):
             raise TypeError("le numTable doit être un chiffre")
-        if not (isinstance(new_numTable,int) and new_numTable>0):
+        if not (isinstance(new_numTable, int) and new_numTable > 0):
             raise ValueError("le numTable doit être un chiffre strictement plus grand que 0")
         self.__numTable = new_numTable
-
 
     @property
     def nbrClient(self):
@@ -115,81 +120,82 @@ class Reservation:
 
     @nbrClient.setter
     def nbrClient(self, new_nbrClient):
-        '''
-         pre: new_nbrClient doit être un chiffre plus grand ou égal a 1
-         post: modification du nombre de client attribé a une Reservation
-        '''
+        """
+         pre: --
+         post: modification du nombre de client de l'instance
+            -raise TypeError si le nombre de client n'est pas un chiffre
+            -raise ValueError si le nombre de client n'est pas un chiffre plus grand ou égal a 1
+        """
 
         if not isinstance(new_nbrClient, int):
-            raise TypeError("le nbrClient doit être un chiffre")
+            raise TypeError("le nombre de client doit être un chiffre")
         if new_nbrClient < 1:
-            raise ValueError("le nbrClient doit être un chiffre plus grand ou égal à 1")
+            raise ValueError("le nombre de client doit être un chiffre plus grand ou égal à 1")
         self.__nbrClient = new_nbrClient
-
 
     @property
     def dateHeure(self):
         return self.__dateHeure
+
     @dateHeure.setter
     def dateHeure(self, new_dateHeure):
-        '''
+        """
         pre: --
-        post: initialise une nouvelle date et heure a l'instance
-        '''
-        #assert isinstance(datetime.strptime(new_dateHeure, "%m/%d/%Y %H:%M"),datetime), "La date doit est sous forme de mois/jour/année heure:minute ."
+        post: initialise une nouvelle date et heure de l'instance
+        """
         self.__dateHeure = new_dateHeure
-
 
     @property
     def idCuisine(self):
         return self.__idCuisine
+
     @idCuisine.setter
     def idCuisine(self, new_idCuisine):
-        '''
-        pre: idCuisine doit être une chaine de caractère compris entre eu,azy,af,as,an OU VIP
-        post: Modification de l'id Cuisine de la reservation
-        '''
-        #assert isinstance(new_idCuisine, str) and len(new_idCuisine) == 2, "L'id cuisine doit être sous forme de deux lettre qui represente une cuisine du monde. Exemple eu,az,af,an,as."
-
+        """
+        pre: --
+        post: Modification de l'identification du type de cuisine de l'instance
+            -raise TypeError si l' identification du type de cusine n'est pas une chaine de caractère
+            -raise ValueError si l'id du type de cuisine n'est pas égal a eu, azy, af, VIP, an ou as
+        """
         if not isinstance(new_idCuisine, str):
-            raise TypeError("idCuisine est une chaine de caractère")
+            raise TypeError("id du type de cuisine est une chaine de caractère")
         if new_idCuisine not in ["eu", "azy", "af", "as", "an", "VIP"]:
-            raise ValueError("idCuisine doit être égal à eu, azy, af, VIP, an ou as")
+            raise ValueError("id du type de cuisine doit être égal à eu, azy, af, VIP, an ou as")
         self.__idCuisine = new_idCuisine
-
 
     @property
     def pmr(self):
         return self.__pmr
+
     @pmr.setter
     def pmr(self, new_pmr):
-        '''
-        pre: pmr doit être un chiifre plus grand ou égale a 0
-        post: modification du nombre de PMR dans la Reservation
-        '''
-        #assert isinstance(new_pmr, int) and new_pmr >= 0, "Il faut indiquer le nombre de personne pmr."
-
-        if not isinstance(new_pmr,int):
+        """
+        pre: --
+        post: modification du nombre de pmr de l'instance
+            -raise TypeError si le nombre de pmr n'est pas un chiffre
+            -raise ValueError si le nombre de pmr n'est pas un chiffre plus grand ou égal à 0
+        """
+        if not isinstance(new_pmr, int):
             raise TypeError("les pmr doit être un chiffre.")
-        if not (isinstance(new_pmr,int) and new_pmr >= 0):
+        if not (isinstance(new_pmr, int) and new_pmr >= 0):
             raise ValueError("les pmr doit être un chiffre plus grand ou égal à 0.")
         self.__pmr = new_pmr
-
 
     @property
     def bb(self):
         return self.__bb
+
     @bb.setter
     def bb(self, new_bb):
-        '''
-         pre: bb doit être un chiifre plus grand ou égale a 0
-         post: modification du nombre de bb dans la Reservation
-        '''
-        #assert isinstance(new_bb, int) and new_bb >= 0, "Il faut indiquer le nombre de bb."
-
-        if not isinstance(new_bb,int):
+        """
+         pre: --
+         post: modification du nombre de bb de l'instance
+            -raise TypeError si le nombre de bb n'est pas un chiffre
+            -raise ValueError si le nombre de bb n'est pas un chiffre plus grand ou égal à 0
+        """
+        if not isinstance(new_bb, int):
             raise TypeError("bb doit etre un chiffre.")
-        if not (isinstance(new_bb,int) and new_bb >= 0):
+        if not (isinstance(new_bb, int) and new_bb >= 0):
             raise ValueError("bb doit etre un chiffre plus grand ou egale à 0.")
         self.__bb = new_bb
     
