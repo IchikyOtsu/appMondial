@@ -48,10 +48,10 @@ def argParse(managerRes,formData):
         assert str(args.TC) in ["eu", "azy", "an", "as", "af",
                                 "VIP"], "ID doit être du type de cuisine, les choix sont: Europe(eu), Asie (azy), Amérique du Nord/Sud (as/an), Afrique (af),VIP. Veuillez entrer l'id (PAS le nom complet.)"
         assert isinstance(int(args.pmr), int) and int(
-            args.pmr) >= 0, "Le nombre de personne(s) à mobilité doit être un nombre positif entier"
+            args.pmr) >= 0 and int(args.pmr) + int(args.bb) <= int(args.nbr), "Le nombre de personne(s) à mobilité doit être un nombre positif entier"
         assert isinstance(int(args.nbr), int) and int(
             args.nbr) >= 0, "Le nombre de personne(s) par table doit être un nombre entier positif ou 0"
         assert isinstance(int(args.bb), int) and int(
-            args.bb) >= 0, "Le nombre de bébé(s) par table doit être un nombre entier positif ou 0"
+            args.bb) >= 0 and int(args.pmr) + int(args.bb) <= int(args.nbr), "Le nombre de bébé(s) par table doit être un nombre entier positif ou 0"
 
         return [args.nom,args.tel,args.dh,args.TC, args.pmr, args.bb,args.nbr]
