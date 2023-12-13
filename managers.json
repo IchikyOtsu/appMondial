@@ -4,11 +4,11 @@
             {
                 "nom": "Weiwei",
                 "telNum": "0477884450",
-                "numTable": 1,
-                "dateHeure": "2023-12-24T13:11",
-                "idCuisine": "af",
-                "pmr": "2",
-                "bb": "2",
+                "numTable": 28,
+                "dateHeure": "2023-12-15T13:21",
+                "idCuisine": "VIP",
+                "pmr": "0",
+                "bb": "1",
                 "nbrClient": "4",
                 "idRes": 1
             }
@@ -215,7 +215,7 @@
                 "idService": "B"
             },
             {
-                "idCuisine": "vip",
+                "idCuisine": "VIP",
                 "nomTypeCuisine": "VIP",
                 "idService": "V"
             }
