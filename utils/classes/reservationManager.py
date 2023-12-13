@@ -12,10 +12,11 @@ class ReservationManager:
         """
         Ajoute une nouvelle réservation à la liste.
 
-        Pre: new_reservation doit être une instance de Reservation.
+        Pre: new_reservation 
         Post: new_reservation est ajoutée à la liste des réservations.
 
-        :param Reservation new_reservation: La nouvelle réservation à ajouter.
+        raise : new_reservation doit être une instance de Reservation.
+
         """
         assert isinstance(new_reservation, Reservation), "Ce n'est pas une instance de Reservation"
         self.reservations.append(new_reservation)
@@ -30,43 +31,48 @@ class ReservationManager:
         """
         Supprime une réservation de la liste.
 
-        Pre: reservation_to_remove doit être une instance de Reservation et faire partie de self.reservations.
+        Pre: reservation_to_remove
         Post: reservation_to_remove est retirée de la liste des réservations.
 
-        :param Reservation reservation_to_remove: La réservation à supprimer.
+        Raise : reservation_to_remove doit être une instance de Reservation 
+                et faire partie de self.reservations.
+
         """
-        try:
-            if not (isinstance(reservation_to_remove, Reservation) and reservation_to_remove in self.reservations):
-                raise TypeError("L'élément à supprimer doit être une instance de Reservation présente dans la liste.")
-            self.reservations.remove(reservation_to_remove)
-        except TypeError as e:
-            print(e)
+        
+        if not isinstance(reservation_to_remove, Reservation):
+            raise TypeError("L'élément à supprimer doit être une instance de Reservation.")
+        if not reservation_to_remove in self.reservations: 
+            raise TypeError("L'élément à supprimer doit être présente dans la liste.")
+        self.reservations.remove(reservation_to_remove)
+        
 
     def findReservationByName(self, name):
         """
         Trouve une réservation par son nom.
 
-        Pre: name doit être une chaîne de caractères.
-        Post: Retourne l'objet Reservation correspondant si trouvé, sinon None.
+        Pre: name 
+        Post: Retourne l'objet Reservation correspondant si trouvé, sinon renvoie None.
 
-        :param str name: Le nom de la réservation à trouver.
-        :return: L'objet Reservation correspondant, ou None si non trouvé.
+        Raise : name doit être une chaîne de caractères.
         """
         if not isinstance(name, str):
             raise TypeError("La valeur donnée n'est pas une chaîne de caractères.")
+
         for reservation in self.reservations:
             if reservation.nom == name:
                 return reservation
+        return None  
+
 
     def findReservationByTable(self, table):
         """
         Trouve les réservations pour une table spécifique.
 
-        Pre: table doit être un entier.
-        Post: Retourne une liste des réservations pour cette table.
+        Pre: table
+        Post: Retourne une liste des réservations pour cette table. Si aucune ne correspond une liste vide sera renvoyée.
 
-        :param int table: Le numéro de la table.
-        :return: Liste des réservations pour cette table.
+        
+        Raise : table doit être un entier.
         """
         if not isinstance(table, int):
             raise TypeError("La valeur donnée n'est pas un entier.")
