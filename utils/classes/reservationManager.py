@@ -12,7 +12,7 @@ class ReservationManager:
         """
         Ajoute une nouvelle réservation à la liste.
 
-        Pre: new_reservation 
+        Pre: new_reservation a ajouter.
         Post: new_reservation est ajoutée à la liste des réservations.
 
         raise : new_reservation doit être une instance de Reservation.
@@ -31,7 +31,7 @@ class ReservationManager:
         """
         Supprime une réservation de la liste.
 
-        Pre: reservation_to_remove
+        Pre: reservation_to_remove a supprimer
         Post: reservation_to_remove est retirée de la liste des réservations.
 
         Raise : reservation_to_remove doit être une instance de Reservation 
@@ -50,7 +50,7 @@ class ReservationManager:
         """
         Trouve une réservation par son nom.
 
-        Pre: name 
+        Pre: name de la réservation
         Post: Retourne l'objet Reservation correspondant si trouvé, sinon renvoie None.
 
         Raise : name doit être une chaîne de caractères.
@@ -68,7 +68,7 @@ class ReservationManager:
         """
         Trouve les réservations pour une table spécifique.
 
-        Pre: table
+        Pre: Numéro de table
         Post: Retourne une liste des réservations pour cette table. Si aucune ne correspond une liste vide sera renvoyée.
 
         
