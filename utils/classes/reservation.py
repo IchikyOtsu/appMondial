@@ -141,7 +141,7 @@ class Reservation:
     def dateHeure(self, new_dateHeure):
         """
         pre: --
-        post: initialise une nouvelle date et heure de l'instance
+        post: modifie la date et heure de l'instance
         """
         self.__dateHeure = new_dateHeure
 
@@ -200,7 +200,10 @@ class Reservation:
         self.__bb = new_bb
     
     def to_json(self):
-        # Convertir les attributs du type de service en un dictionnaire JSON
+        """
+            pre: --
+            post: Convertir les attributs de l'instance en un dictionnaire JSON
+        """
         return {
             "nom": self.nom,
             "telNum": self.telNum,
@@ -215,7 +218,14 @@ class Reservation:
 
     @classmethod
     def from_json(cls, data):
-        # Créez une instance de TypeService à partir d'un dictionnaire JSON
+        """
+            pre: --
+            post: Créez une instance à partir d'un dictionnaire
+                -raise TypeError si le data n'est pas un dictionnaire
+        """
+        if not isinstance(data, dict):
+            raise TypeError("data doit être un dictionnaire")
+
         return cls(
             nom=data.get("nom"),
             telNum=data.get("telNum"),
