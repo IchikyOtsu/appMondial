@@ -13,8 +13,10 @@ class TableManager:
         '''
         Ajoute une nouvelle table à la liste des tables.
 
-        PRE : new_table doit être un objet de type Table.
+        PRE : new_table 
         POST : Ajoute la nouvelle table à la liste des tables.
+
+        Raise : new_table doit être un objet de type Table.
         '''
         assert isinstance(new_table,Table), "La valeur ajouter n'est pas une instance de Table."
         self.tables.append(new_table)
