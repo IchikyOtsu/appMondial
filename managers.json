@@ -11,6 +11,17 @@
                 "bb": "1",
                 "nbrClient": "4",
                 "idRes": 1
+            },
+            {
+                "nom": "Ougo",
+                "telNum": "0477884450",
+                "numTable": 29,
+                "dateHeure": "2023-12-15T13:21",
+                "idCuisine": "VIP",
+                "pmr": "0",
+                "bb": "1",
+                "nbrClient": "4",
+                "idRes": 2
             }
         ]
     },
