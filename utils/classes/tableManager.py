@@ -2,66 +2,67 @@ from utils.classes.table import Table
 class TableManager:
     def __init__(self):
         '''
-        pre:--
-        post: initialise une liste pour stocker les object
+        Initialise un gestionnaire de tables avec une liste vide de tables.
+
+        PRE : -
+        POST : Crée une liste vide pour stocker les tables.
         '''
         self.tables = []
 
-    def addTable(self,new_table):
+    def addTable(self, new_table):
         '''
-        :param object new_table: newTable
-        :add a new_table  -->liste
-        pre: new_table == object
-            new_table n'est pas une instance de Table
-        post: ajoute des donnees dans la list de l'instance
+        Ajoute une nouvelle table à la liste des tables.
+
+        PRE : new_table 
+        POST : Ajoute la nouvelle table à la liste des tables.
+
+        Raise : new_table doit être un objet de type Table.
         '''
         assert isinstance(new_table,Table), "La valeur ajouter n'est pas une instance de Table."
         self.tables.append(new_table)
-    def removeTable(self,table):
+
+    def removeTable(self, table):
         '''
-        :param object table:table
-        :remove a table   liste-->
-         pre: entree une nouvelle instance
-              table in self.tables
-              table == instance de Table
-        post: retrait des donnees dans la list de l'instance
+        Supprime une table de la liste des tables.
+
+        PRE : table 
+        POST : Supprime la table spécifiée de la liste des tables.
+
+        Raise : table doit être une table existante dans la liste et une instance de table.
         '''
-        try:
-            if not (isinstance(table, Table)and table in self.tables):
-                raise ValueError("l'instance a retirer n'est pas une instance de Table.")
-            self.tables.remove(table)
-        except ValueError as e:
-            print(e)
-    def findTableWithNumber(self,num):
+
+        if not isinstance(table, Table) :
+            raise ValueError("l'instance a retirer n'est pas une instance de Table.")
+        if not table in self.tables:
+            raise ValueError("l'instance a retirer n'est pas dans la liste des tables.")
+        self.tables.remove(table)
+
+    def findTableWithNumber(self, num):
         '''
-        :param int num: tableNumber
-        :find a tableNumber
-         pre: entre un num
-            num in self.tables
-            num == int
-        post: retourne l'object
+        Recherche une table avec un numéro spécifique.
+
+        PRE : num 
+        POST : Renvoie la table correspondant au numéro spécifié s'il en existe une.
+
+        Raise : num doit être un entier correspondant au numéro de table à rechercher.
         '''
-        try:
-            if not isinstance(num, int):
+        if not isinstance(num, int):
                 raise TypeError("La valeur donnée n'est pas un chiffre")
-            for i in self.reservations:
-
-                if i.num == num:
-                    return i
-        except TypeError as e :
-            print(e)
-        except:
-            print("erreur car pas dedans")
-
+        for i in self.reservations:
+            if i.num == num:
+                return i
+        return None
+    
     def afficherTables(self):
         '''
-        :print:liste table
-        pre:--
-        post: retour chaque tables de l'instance
+        Affiche les informations sur les tables.
+
+        PRE : -
+        POST : Affiche les informations de chaque table dans la liste.
         '''
         for i in self.tables:
             print(i)
-            
+    
     def to_json(self):
         # Convertir la liste de tables en une liste de dictionnaires JSON
         tables_json = [table.to_json() for table in self.tables]

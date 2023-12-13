@@ -32,12 +32,17 @@ async function affichage(){
             let td = "<td>" + elem + "</td>";
             ligne+=td;
         });
+        ligne += `<td id="${reservation.idRes}" onclick='supprimerDuTab(${reservation.idRes})'>` + "<button>Supprimer</button>" + "</td>"
         ligne += "</tr>"
         tbody += ligne;
         document.querySelector("tbody").innerHTML = tbody;
     })
 }
 
+function supprimerDuTab(id){
+    eel.supprimerDuGUI(id);
+    affichage();
+}
 
 function init(){
     document.querySelector("form").addEventListener("submit",retrieveData);

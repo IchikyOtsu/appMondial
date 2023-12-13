@@ -1,5 +1,8 @@
 import argparse,datetime
 from utils.fonctions.supprimerRes import supprimerRes
+import eel
+
+
 
 def argParse(managerRes,formData):
     '''
