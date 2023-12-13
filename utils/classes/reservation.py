@@ -119,13 +119,12 @@ class Reservation:
          pre: new_nbrClient doit être un chiffre plus grand ou égal a 1
          post: modification du nombre de client attribé a une Reservation
         '''
-        #assert isinstance(new_nbrClient, int) and new_nbrClient > 0, "La nbr client doit est un chiffre strictement positif."
 
-        if not isinstance(new_nbrClient,int):
+        if not isinstance(new_nbrClient, int):
             raise TypeError("le nbrClient doit être un chiffre")
-        if not (isinstance(new_nbrClient,int) and len(new_nbrClient) >= 1):
-            raise ValueError("le nbrClient doit être un chiffre plus grand ou égale a 1")
-        self.__numTable = new_nbrClient
+        if new_nbrClient < 1:
+            raise ValueError("le nbrClient doit être un chiffre plus grand ou égal à 1")
+        self.__nbrClient = new_nbrClient
 
 
     @property
@@ -153,9 +152,9 @@ class Reservation:
         #assert isinstance(new_idCuisine, str) and len(new_idCuisine) == 2, "L'id cuisine doit être sous forme de deux lettre qui represente une cuisine du monde. Exemple eu,az,af,an,as."
 
         if not isinstance(new_idCuisine, str):
-            raise TypeError("idCuisine est un chaine de caractère")
-        if not (isinstance(new_idCuisine, str) and new_idCuisine == "eu" and new_idCuisine == "azy" and new_idCuisine == "af" and new_idCuisine == "as" and new_idCuisine == "an" and new_idCuisine == "VIP"):
-            raise ValueError("idCuisine est un chaine de caractère qui est égal a eu , azy , af , VIP, an ou as")
+            raise TypeError("idCuisine est une chaine de caractère")
+        if new_idCuisine not in ["eu", "azy", "af", "as", "an", "VIP"]:
+            raise ValueError("idCuisine doit être égal à eu, azy, af, VIP, an ou as")
         self.__idCuisine = new_idCuisine
 
 
