@@ -27,7 +27,26 @@ def importJSON():
     return file
 
 @eel.expose
+def supprimerDuGUI(id):
+    with open("managers.json","r") as file:
+        file = file.read()
+        file = json.loads(file)
+        managerRes = file["reservation_manager"]["reservations"]
+        for res in managerRes:
+            if res["idRes"] == id:
+                print(res)
+                managerRes.remove(res)
+                print(file)
+    with open("managers.json","w") as final:
+        file = json.dumps(file)
+        final.write(file)
+
+
+
+
+@eel.expose
 def mainGUI():
+
     init = initial()
     # Utilisation des managers
     managerRes = init.reservation_manager
@@ -70,6 +89,8 @@ def dataBase():
     managerService = init.typeServManager
     managerCuisine = init.typeCuisineManager
 
+
+
     serv1= TypeService('B','Basique',0)
     serv2 = TypeService('V', 'VIP', 1)
     managerService.addService(serv2)
@@ -97,6 +118,8 @@ def dataBase():
     managerCuisine.displayList()
 
     init.sauvegarder_managers()
+
+
 
 def afficherManager():
     '''
