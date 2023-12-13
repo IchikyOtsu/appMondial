@@ -15,8 +15,8 @@ body {
 
 h2 {
     color: #333;
-    font-size: 36px; 
-    
+    font-size: 36px;
+
 }
 
 form {
@@ -79,7 +79,7 @@ input[type="submit"]:hover {
 }
 .tab button:first-child{
     margin-left: 2em;
-} 
+}
 
 .tabcontent {
     animation: fadeEffect 0s;
@@ -94,18 +94,18 @@ input[type="submit"]:hover {
 .table-container {
     margin: 20px;
   }
-  
+
   .custom-table {
     width: 100%;
     border-collapse: collapse;
   }
-  
+
   .custom-table th, .custom-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
   }
-  
+
   .custom-table th {
     background-color: #f2f2f2;
   }

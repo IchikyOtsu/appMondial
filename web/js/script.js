@@ -23,8 +23,18 @@ async function affichage(){
     dataDisplay = await eel.importJSON()();
     console.log(dataDisplay);
     let listReservations = dataDisplay["reservation_manager"]["reservations"];
+    let tbody = ""
     listReservations.forEach(function(reservation){
-        //à compléter pour les lignes du tableau
+        keys = Object.keys(reservation);
+        let ligne = "<tr>"
+        values = Object.values(reservation);
+        values.forEach(function(elem){
+            let td = "<td>" + elem + "</td>";
+            ligne+=td;
+        });
+        ligne += "</tr>"
+        tbody += ligne;
+        document.querySelector("tbody").innerHTML = tbody;
     })
 }
 
@@ -32,6 +42,7 @@ async function affichage(){
 function init(){
     document.querySelector("form").addEventListener("submit",retrieveData);
     document.querySelector("form").addEventListener("submit",affichage);
+    document.querySelector("body").addEventListener("load",affichage)
 }
 
 
