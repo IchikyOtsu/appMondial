@@ -27,7 +27,7 @@ class TableManager:
         '''
         Supprime une table de la liste des tables.
 
-        PRE : table doit être issu de la classe table et appartenir à liste table.
+        PRE : table doit être issu de la classe table et faire partie de la liste table.
         POST : Supprime la table spécifiée de la liste des tables.
 
         '''
@@ -81,7 +81,7 @@ class TableManager:
         '''
             Crée et retourne une instance de TableManager à partir d'un dictionnaire JSON.
 
-            PRE : Le paramètre 'data' est un dictionnaire contenant des données JSON valides.
+            PRE : Le paramètre 'data' est un dictionnaire contenant des données JSON.
             POST : Crée une nouvelle instance de TableManager à partir des données JSON fournies.
             Les tables extraites des données sont ajoutées à l'instance de TableManager créée.
         '''

@@ -1,6 +1,11 @@
 /* styles.css */
 
 /* Style pour le formulaire */
+
+th:hover{
+    cursor: pointer;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
