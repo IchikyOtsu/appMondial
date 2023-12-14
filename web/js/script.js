@@ -158,7 +158,7 @@ function triSurClient(){
         document.querySelector("tbody").innerHTML = tbody;
     })
 }
-
+//ajout des tris les coupaings
 function triSurRes(){
     let listReservations = dataDisplay["reservation_manager"]["reservations"];
     let tbody = ""
