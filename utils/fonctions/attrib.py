@@ -25,3 +25,4 @@ def attribution(list, managerRes, managerTable, managerCuisine):
                 list.append(table.numTable)
                 return list
     return False
+#commentaire
