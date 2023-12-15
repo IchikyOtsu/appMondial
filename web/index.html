@@ -25,13 +25,13 @@
 
             <form action="/submit_form" method="post" >
                 <label for="nom">Nom :</label>
-                <input type="text" id="nom" name="nom" placeholder="Votre nom"><br><br>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom" required><br><br>
 
                 <label for="telephone">Numéro de Téléphone :</label>
-                <input type="tel" id="telephone" name="tel" placeholder="Numéro de téléphone"><br><br>
+                <input type="tel" id="telephone" name="tel" placeholder="Numéro de téléphone" required><br><br>
 
                 <label for="nb_personnes">Nombre de personnes :</label>
-                <input type="number" id="nb_personnes" name="nbPers" placeholder="Nombre de personnes" min="0" max="15"><br><br>
+                <input type="number" id="nb_personnes" name="nbPers" placeholder="Nombre de personnes" min="0" max="24" required><br><br>
 
                 <label for="nb_pmr">Nombre de personnes à mobilité réduite (PMR) :</label>
                 <input type="number" id="nb_pmr" name="nbPmr" placeholder="Nombre de PMR" min="0"><br><br>
@@ -40,10 +40,10 @@
                 <input type="number" id="nb_bebes" name="nbBb" placeholder="Nombre de bébés" min="0" max="5"><br><br>
 
                 <label for="date_heure">Date et Heure :</label>
-                <input type="datetime-local" id="date_heure" name="dateHeure"><br><br>
+                <input type="datetime-local" id="date_heure" name="dateHeure" required><br><br>
 
                 <label for="type_cuisine">Type de cuisine préféré :</label>
-                <select id="type_cuisine" name="tc">
+                <select id="type_cuisine" name="tc" required>
                     <option value="eu">Européen</option>
                     <option value="azy">Asiatique</option>
                     <option value="as">Amérique du Sud</option>
