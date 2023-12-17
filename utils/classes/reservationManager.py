@@ -16,8 +16,10 @@ class ReservationManager:
         Post: new_reservation est ajoutée à la liste des réservations.
 
         raise : new_reservation doit être une instance de Reservation.
-
+                on vérifie si l'id de la réservation n'existe pas déjà dans la liste des réservations. 
         """
+        if any(res.idRes == new_reservation.idRes for res in self.reservations):
+            raise ValueError("Une réservation avec le même ID existe déjà.")
         assert isinstance(new_reservation, Reservation), "Ce n'est pas une instance de Reservation"
         self.reservations.append(new_reservation)
 
