@@ -1,12 +1,13 @@
 import unittest
-from utils.classes.tableManager import Table, TableManager
+from utils.classes.tableManager import TableManager
+
 
 class TestTableManager(unittest.TestCase):
 
-    def setUp(self):
-        self.manager = TableManager()
-        self.table1 = Table(1, 4, "V")
-        self.table2 = Table(2, 2, "B")
+    def test_init(self):
+        table_manager = TableManager()
+        self.assertEqual(table_manager.tables,[],"L'attribut table est initiée à vide")
+        
 
     def test_addTable(self):
         self.manager.addTable(self.table1)
