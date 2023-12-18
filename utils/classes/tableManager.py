@@ -91,3 +91,7 @@ class TableManager:
             table = Table.from_json(table_data)
             manager.addTable(table)
         return manager
+
+
+tm = TableManager()
+print(tm.tables == False)
