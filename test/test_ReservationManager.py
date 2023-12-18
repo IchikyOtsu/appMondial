@@ -1,5 +1,7 @@
 import unittest
 from utils.classes.reservationManager import Reservation, ReservationManager
+from unittest.mock import patch
+from io import StringIO
 
 
 class TestReservationManager(unittest.TestCase):
@@ -163,6 +165,16 @@ class TestReservationManager(unittest.TestCase):
         }
         manager_from_json = ReservationManager.from_json(json_data)
         self.assertEqual(len(manager_from_json.reservations), 2)
+
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_affichage(self, mock_stdout):
+        self.manager.addReservation(self.res1)
+        self.manager.affichage()
+        expected_output = ("ID: 1 nom :Nom1, telNum :0123456789, numTable :1, "
+                           "dateHeure :2023-12-10 18:00, idCuisine :eu, pmr :0, bb :0, "
+                           "nombre de personne :1\n")
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
 
 if __name__ == '__main__':
     unittest.main()
