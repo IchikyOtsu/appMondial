@@ -44,8 +44,8 @@ def argParse(managerRes,formData):
 
         assert isinstance(args.nom, str) or not str(
             args.nom).isalpha(), "Il faut que le nom soit écrit avec des charactères alphabétiques Exemple: Hugo"
-        assert isinstance(args.tel, str) and str(
-            args.tel).isnumeric(), "Il faut que le numéro de téléphone soit écrit avec des charactères numériques: 0468 78 33 99 "
+        assert isinstance(args.tel, str) and (str(
+            args.tel).isnumeric() or " " in str(args.tel)), "Il faut que le numéro de téléphone soit écrit avec des charactères numériques: 0468 78 33 99 "
         #assert datetime.datetime.strptime(args.dh,
          #                                 '%Y-%m-%d %H:%M'), "La date et heure de la réservation (format AAAA-MM-JJ HH:MM). Exemple: '2023-10-10 19:00' Vous devez mettre cette date entre '' ou guillemet. "
         assert str(args.TC) in ["eu", "azy", "an", "as", "af",

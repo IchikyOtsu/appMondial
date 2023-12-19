@@ -44,6 +44,17 @@
                 "bb": "1",
                 "nbrClient": "4",
                 "idRes": 9
+            },
+            {
+                "nom": "afa",
+                "telNum": "0477 88 44 50",
+                "numTable": 1,
+                "dateHeure": "2023-12-15T00:51",
+                "idCuisine": "eu",
+                "pmr": "2",
+                "bb": "1",
+                "nbrClient": "4",
+                "idRes": 10
             }
         ]
     },
