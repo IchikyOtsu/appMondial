@@ -48,9 +48,9 @@ function triSurNom(){
     let listReservations = dataDisplay["reservation_manager"]["reservations"];
     let tbody = ""
     listReservations.sort(function(reservation1,reservation2){
-        if (reservation1["nom"] < reservation2["nom"]){return -1}
-        if (reservation1["nom"] > reservation2["nom"]){return 1}
-        return reservation1["nom"] - reservation2["nom"]
+        if (reservation1["nom"].toLowerCase() < reservation2["nom"].toLowerCase()){return -1}
+        if (reservation1["nom"].toLowerCase() > reservation2["nom"].toLowerCase()){return 1}
+        return reservation1["nom"].toLowerCase() - reservation2["nom"].toLowerCase()
     })
     listReservations.forEach(function(reservation){
         keys = Object.keys(reservation);

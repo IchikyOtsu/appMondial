@@ -9,7 +9,11 @@ class TableManager:
         PRE : -
         POST : Crée une liste vide pour stocker les tables.
         '''
-        self.tables = []
+        self.__tables = []
+
+    @property
+    def tables(self):
+        return self.__tables
 
     def addTable(self, new_table):
         '''
@@ -21,19 +25,20 @@ class TableManager:
         if not isinstance(new_table, Table):
             raise TypeError("La valeur ajouter n'est pas une instance de Table.")
 
-        self.tables.append(new_table)
+        if new_table not in self.tables:
+            self.tables.append(new_table)
+        else:
+            raise ValueError("La nouvelle valeur est déjà présente dans l'attribut tables")
 
     def removeTable(self, table):
         '''
         Supprime une table de la liste des tables.
 
-        PRE : table doit être issu de la classe table et faire partie de la liste table.
+        PRE : table doit  faire partie de la liste table et être issu de la classe table sinon une ValueError sera Raise
         POST : Supprime la table spécifiée de la liste des tables.
 
         '''
 
-        if not isinstance(table, Table):
-            raise ValueError("l'instance a retirer n'est pas une instance de Table.")
         if not table in self.tables:
             raise ValueError("l'instance a retirer n'est pas dans la liste des tables.")
         self.tables.remove(table)
@@ -43,14 +48,15 @@ class TableManager:
         Recherche une table avec un numéro spécifique.
 
         PRE : num doit être un entier (int) correspondant au numéro de table à rechercher si il n'est pas entier alors une TypeError sera Raise
-        POST : Renvoie la table correspondant au numéro spécifié s'il en existe une.
+        POST : Renvoie la table correspondant au numéro spécifié s'il en existe une sinon Raise une ValueError
         '''
         if not isinstance(num, int):
             raise TypeError("La valeur donnée n'est pas un chiffre")
         for i in self.tables:
             if i.numTable == num:
                 return i
-        return None
+            else:
+                raise ValueError(f"Il n'y a pas de table avec le numéro {num}")
 
     def afficherTables(self):
         '''
@@ -60,7 +66,7 @@ class TableManager:
         POST :Affiche les informations de chaque table dans la liste. Les informations comprennent : numéro de table, capacité, état, etc.
         '''
         for i in self.tables:
-            print(i)
+            print(str(i))
 
     def to_json(self):
         """
@@ -91,7 +97,3 @@ class TableManager:
             table = Table.from_json(table_data)
             manager.addTable(table)
         return manager
-
-
-tm = TableManager()
-print(tm.tables == False)
