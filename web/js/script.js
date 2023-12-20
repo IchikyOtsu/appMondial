@@ -4,13 +4,25 @@ let dataDisplay;
 function retrieveData(event){
     event.preventDefault()
     let userData = {};
+
+
     form = document.querySelector("form")
+    let dateNonFormatee= form.dateHeure.value
+    let date = new Date(dateNonFormatee);
+    let jour = date.getDate().toString().padStart(2, '0');
+    let mois = (date.getMonth() + 1).toString().padStart(2, '0');
+    let annee = date.getFullYear();
+    let heure = date.getHours().toString().padStart(2, '0');
+    let minutes = date.getMinutes().toString().padStart(2, '0');
+
+    let dateFormatee = jour + '/' + mois + '/' + annee + ' ' + heure + ':' + minutes;
     userData["nom"] = form.nom.value;
     userData["tel"] = form.tel.value;
     userData["nbPers"] = form.nbPers.value;
     userData["nbPmr"] = form.nbPmr.value;
     userData["nbBb"] = form.nbBb.value;
-    userData["dateHeure"] = form.dateHeure.value;
+    //userData["dateHeure"] = form.dateHeure.value;
+    userData["dateHeure"]=dateFormatee;
     userData["typeCuisine"] = form.tc.value;
     dataPython = userData
     console.log(dataPython)
