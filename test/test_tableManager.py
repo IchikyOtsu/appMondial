@@ -1,5 +1,6 @@
 import unittest
 from utils.classes.tableManager import TableManager
+from utils.classes.table import Table
 
 
 class TestTableManager(unittest.TestCase):

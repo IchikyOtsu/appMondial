@@ -58,6 +58,7 @@ class TableManager:
             else:
                 raise ValueError(f"Il n'y a pas de table avec le numéro {num}")
 
+    """
     def afficherTables(self):
         '''
         Affiche les informations sur les tables.
@@ -66,7 +67,7 @@ class TableManager:
         POST :Affiche les informations de chaque table dans la liste. Les informations comprennent : numéro de table, capacité, état, etc.
         '''
         for i in self.tables:
-            print(str(i))
+            print(str(i))"""
 
     def to_json(self):
         """

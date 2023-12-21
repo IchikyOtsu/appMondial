@@ -1,0 +1,28 @@
+void remiseAZero(struct Pilote *pilotes, int taille) {
+    for (int i = 0; i < taille; ++i) {
+        memset(&pilotes[i], 0, sizeof(struct Pilote));
+    }
+}
+[22:57]
+j'ai encore d'autre commit stuve
+[22:57]
+void lap_time_format(int lap_time){
+    int min = lap_time/ (60 * 1000);
+    int s = (lap_time % (60 * 1000))/1000;
+    int ms = lap_time % 1000;
+
+    printf("%d:%02d.%03d", min, s, ms);
+}
+void sector_time_format(int sector_time){
+    int s = (sector_time % (601000)) / 1000;
+    int ms = sector_time % 1000;
+
+    printf("%02d.%03d", s, ms);
+}
+
+void gap_time_format(int gap_time){
+    int s = (gap_time % (60 1000)) / 1000;
+    int ms = gap_time % 1000;
+
+    printf("  |  +%d.%03d", s, ms);
+}
